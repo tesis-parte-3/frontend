@@ -4,15 +4,17 @@ import App from './App.tsx'
 import { createTheme } from '@mantine/core'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
-import { Provider as ReduxProvider} from 'react-redux'
+import { Provider as ReduxProvider } from 'react-redux'
 import { store } from './store.ts'
 import '@mantine/core/styles.css';
+import { ColorSchemeScript } from '@mantine/core';
+
 
 function Main() {
-  const theme = createTheme({});
   return (
     <ReduxProvider store={store}>
-      <MantineProvider theme={theme}>
+      <ColorSchemeScript defaultColorScheme="auto" />
+      <MantineProvider defaultColorScheme="auto">
         <Router>
           <App />
         </Router>

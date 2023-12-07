@@ -28,6 +28,7 @@ import {
   IconChevronDown,
 } from '@tabler/icons-react';
 import classes from './Navbar.module.css';
+import logo from './logoctm.png';
 
 const mockdata = [
   {
@@ -86,10 +87,10 @@ function Navbar() {
   ));
 
   return (
-    <Box pb={120}>
+    <Box pb={70}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <Text fz={30}>LOGO</Text>
+        <img src={logo} alt="Logo" className={classes.logito}/>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
@@ -161,7 +162,7 @@ function Navbar() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="QUIZDRIVE"
         hiddenFrom="sm"
         zIndex={1000000}
       >
