@@ -1,13 +1,19 @@
-import Navbar from './components/Navbar/navbar'
-import Login from './pages/Login'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import Info from './pages/Info';
+import Welcome from './pages/Welcome';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-      <Login />
-    </>
-  )
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Welcome} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/info" component={Info} />
+      </Switch>
+    </Router>
+  );
 }
 
-export default App
+export default App;

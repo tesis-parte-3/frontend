@@ -12,7 +12,9 @@ import {
     Anchor,
     Stack,
 } from '@mantine/core';
+import Navbar from '../components/Navbar/navbar';
 import { GoogleButton } from './GoogleButton';
+import { Link } from 'react-router-dom';
 
 function Login() {
     const [type, toggle] = useToggle(['Login', 'Register']);
@@ -49,6 +51,8 @@ function Login() {
     });
 
     return (
+        <>    
+        <Navbar />
         <Paper radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
             <Text size="lg" fw={500}>
                 Bienvenido a QuizDrive, {type} con
@@ -126,6 +130,7 @@ function Login() {
                 </Group>
             </form>
         </Paper>
+        </>
     )
 }
 
