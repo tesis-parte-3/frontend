@@ -53,7 +53,7 @@ function Login() {
     return (
         <>    
         <Navbar />
-        <Paper radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
+        <Paper mt="60" radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
             <Text size="lg" fw={500}>
                 Bienvenido a QuizDrive, {type} con
             </Text>

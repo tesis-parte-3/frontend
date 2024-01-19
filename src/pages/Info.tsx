@@ -12,7 +12,7 @@ function Info() {
     return (
         <>
         <Navbar />
-        <Container size="sm" className={classes.wrapper}>
+        <Container mt="70" size="sm" className={classes.wrapper}>
             <Title ta="center" className={classes.title}>
                 Preguntas frecuentes
             </Title>

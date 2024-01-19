@@ -87,7 +87,7 @@ function Navbar() {
   ));
 
   return (
-    <Box pb={70}>
+    <Box pb={0}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
         <img src={logo} alt="Logo" className={classes.logito}/>
