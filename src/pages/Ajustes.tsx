@@ -1,13 +1,8 @@
 import { Container, Title, Accordion } from '@mantine/core';
 import classes from '../assets/css/info.module.css';
 
-
-
 const placeholder =
         'ajustes jijija'
-
-
-
 
 function Ajustes() {
 
