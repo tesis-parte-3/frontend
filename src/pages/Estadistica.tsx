@@ -1,7 +1,5 @@
-import Backmenu from '../components/Userinfo.init/backmenu';
 import { Container, Title, Accordion } from '@mantine/core';
 import classes from '../assets/css/info.module.css';
-
 const placeholder =
     'tuki';
 
@@ -10,8 +8,6 @@ const placeholder =
 function Estadistica() {
 
     return (
-        <>
-        <Backmenu />
                 <Container mt="70" size="sm" className={classes.wrapper}>
             <Title ta="center" className={classes.title}>
                 Preguntas frecuentes
@@ -24,7 +20,6 @@ function Estadistica() {
                 </Accordion.Item>
             </Accordion>
         </Container>
-        </>
     )
 }
 

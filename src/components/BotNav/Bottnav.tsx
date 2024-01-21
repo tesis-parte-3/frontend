@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Box, Flex, Text } from '@mantine/core';
 import classes from './Bottnav.module.css';
 import { Settings, Book, Writing, Graph } from 'tabler-icons-react';
@@ -10,20 +10,8 @@ import { useColorScheme } from '@mantine/hooks';
 
 function Bottnav() {
     const colorScheme = useColorScheme();
-    const location = useLocation();
-    const history = useHistory();
-    const handleEstudiosClick = () => {
-        history.push('/Estudios');
-    };
-    const handleExamenClick = () => {
-        history.push('/Examen');
-    };
-    const handleEstadisticaClick = () => {
-        history.push('/Estadistica');
-    };
-    const handleAjustesClick = () => {
-        history.push('/Ajustes');
-    };
+    const navigate = useNavigate();
+
 
     return (
         <>
@@ -37,7 +25,7 @@ function Bottnav() {
                             mt={{ base: '1%' }}
                         >
                             <Tooltip label="Estudios" position="top">
-                                <div onClick={handleEstudiosClick} style={{padding: '0px',margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div onClick={() => navigate("/Estudios")} style={{padding: '0px',margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                                 <div className={classes.icono} style={{
                                         background: location.pathname === '/Estudios' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
@@ -55,7 +43,7 @@ function Bottnav() {
                                 </div>
                             </Tooltip>
                             <Tooltip label="Examen" position="top">
-                                <div onClick={handleExamenClick} style={{margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div onClick={() => navigate("/Examen")} style={{margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                                 <div className={classes.icono} style={{
                                         background: location.pathname === '/Examen' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
@@ -73,7 +61,7 @@ function Bottnav() {
                                 </div>
                             </Tooltip>
                             <Tooltip label="Estadistica" position="top">
-                                <div onClick={handleEstadisticaClick} style={{margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div onClick={() => navigate("/Estadistica")} style={{margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                                 <div className={classes.icono} style={{
                                         background: location.pathname === '/Estadistica' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
@@ -91,7 +79,7 @@ function Bottnav() {
                                 </div>
                             </Tooltip>
                             <Tooltip label="Ajustes" position="top">
-                                <div onClick={handleAjustesClick} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', margin: '0px', }}>
+                                <div onClick={() => navigate("/Ajustes")} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', margin: '0px', }}>
                                     <div className={classes.icono} style={{
                                         background: location.pathname === '/Ajustes' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
@@ -108,6 +96,7 @@ function Bottnav() {
                                     </Text>
                                 </div>
                             </Tooltip>
+                            
                         </Flex>
                     </footer>
                 </Box>

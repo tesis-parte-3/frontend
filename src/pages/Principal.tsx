@@ -1,12 +1,17 @@
-import UserInfoAction from '../components/Userinfo.init/UserInfoAction';
-import Bottnav from '../components/BotNav/Bottnav';
+import UserInfoAction from "../components/Userinfo.init/UserInfoAction";
 
 function Principal() {
-
+    
     return (
         <>
             <UserInfoAction />
-            <Bottnav/>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <h1>Principal</h1>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
