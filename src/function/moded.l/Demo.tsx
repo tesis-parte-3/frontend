@@ -19,3 +19,4 @@ function Demo() {
         </ActionIcon>
     );
 }
+export default Demo;
