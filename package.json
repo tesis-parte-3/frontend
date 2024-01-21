@@ -25,8 +25,6 @@
     "@mantine/prism": "^6.0.21",
     "@mantine/spotlight": "^7.2.2",
     "@mantine/tiptap": "^7.2.2",
-    "@mui/icons-material": "^5.15.5",
-    "@mui/material": "^5.15.5",
     "@reduxjs/toolkit": "^1.9.7",
     "@tabler/icons-react": "^2.42.0",
     "@tiptap/extension-link": "^2.1.13",
