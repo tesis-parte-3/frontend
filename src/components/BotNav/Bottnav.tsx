@@ -25,7 +25,7 @@ function Bottnav() {
                                         background: location.pathname === '/Estudios' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
                                         <Book
-                                            size={42}
+                                            size={38}
                                             strokeWidth={2}
                                         />
                                     </div>
@@ -41,7 +41,7 @@ function Bottnav() {
                                         background: location.pathname === '/Examen' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
                                         <Writing
-                                            size={42}
+                                            size={38}
                                             strokeWidth={2}
                                         />
                                     </div>
@@ -57,7 +57,7 @@ function Bottnav() {
                                         background: location.pathname === '/Estadistica' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
                                         <Graph
-                                            size={42}
+                                            size={38}
                                             strokeWidth={2}
                                         />
                                     </div>
@@ -73,7 +73,7 @@ function Bottnav() {
                                         background: location.pathname === '/Ajustes' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
                                         <Settings
-                                            size={42}
+                                            size={38}
                                             strokeWidth={2}
                                         />
                                     </div>

@@ -17,9 +17,9 @@ function Ajustes() {
             <IconsProfile/>
             </Paper>
 
-            <Paper mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" shadow="xl" withBorder className={classes.card}>
+            <Paper /* minHeight: '100vh'  */ mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" shadow="xl" withBorder className={classes.card}>
                 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{  display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Text> Modo oscuro/claro </Text> <Demo />
                 </div>
                 <Divider my="md" />
@@ -45,7 +45,7 @@ function Ajustes() {
                 <Text> Agregar Numero Telefonico </Text> <Button variant="default">Agregar</Button>
                 </div>
             </Paper>
-            <Paper mt="70" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
+            <Paper mt="100" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
         </>
 
     )
