@@ -14,7 +14,6 @@ import {
 } from '@mantine/core';
 import Navbar from '../components/Navbar/navbar';
 import { GoogleButton } from './GoogleButton';
-import { Link } from 'react-router-dom';
 
 function Login() {
     const [type, toggle] = useToggle(['Login', 'Register']);
