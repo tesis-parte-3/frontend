@@ -10,6 +10,7 @@ import Estudios from './pages/Estudios';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Bottnav from './components/BotNav/Bottnav'; 
 import Backmenu from './components/Userinfo.init/backmenu';
+import ErrorPage from './pages/ErrorPage';
 import React from 'react';
 
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       {showBackmenu && <Backmenu />}
       {showBottnav && <Bottnav />}
       <Routes location={location} key={location.pathname}>
+        <Route path='/*' element={<ErrorPage/>}/>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/info" element={<Info />} />

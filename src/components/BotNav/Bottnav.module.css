@@ -3,12 +3,11 @@
     padding: 0px;
     bottom: 0;
     width: 100%;
-    height: rem(95px);
+    height: 15%;
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
-    border-top: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-    background-color: light-dark(var(--mantine-background), var(--mantine-color-dark-7));
-
+    border-top: rem(2px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
 }
 
 .icono {
@@ -20,4 +19,25 @@
     width: 60px;
     height: 60px;
     
+}
+.dark {
+    @mixin dark {
+        display: none;
+        
+    }
+
+    @mixin light {
+        display: block;
+    }
+    
+}
+
+.light {
+    @mixin light {
+        display: none;
+    }
+
+    @mixin dark {
+        display: block;
+    }
 }

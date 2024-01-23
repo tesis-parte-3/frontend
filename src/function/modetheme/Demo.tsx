@@ -3,13 +3,14 @@ import { IconSun, IconMoon } from '@tabler/icons-react';
 import cx from 'clsx';
 import classes from './Demo.module.css';
 
+
 function Demo() {
     const { setColorScheme } = useMantineColorScheme();
-    const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
+    const computedColorScheme = useComputedColorScheme('dark', { getInitialValueInEffect: true });
 
     return (
         <ActionIcon
-            onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+        onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
             variant="default"
             size="xl"
             aria-label="Toggle color scheme"

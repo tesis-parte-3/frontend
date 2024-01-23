@@ -6,14 +6,12 @@ import { MantineProvider } from '@mantine/core'
 import { Provider as ReduxProvider } from 'react-redux'
 import { store } from './store.ts'
 import '@mantine/core/styles.css';
-import { ColorSchemeScript } from '@mantine/core';
 
 
 function Main() {
   return (
     <ReduxProvider store={store}>
-      <ColorSchemeScript defaultColorScheme="auto" />
-      <MantineProvider defaultColorScheme="auto">
+      <MantineProvider >
         <Router>
           <App />
         </Router>

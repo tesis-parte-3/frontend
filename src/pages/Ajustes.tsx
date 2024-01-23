@@ -1,25 +1,53 @@
-import { Container, Title, Accordion } from '@mantine/core';
-import classes from '../assets/css/info.module.css';
-
-const placeholder =
-        'ajustes jijija'
+import Demo from "../function/modetheme/Demo";
+import { Paper, Divider, Text, Button, rem } from '@mantine/core';
+import classes from '../components/Graficos/StatsCard.module.css';
+import UploadProfile from "../components/Userinfo.init/UploadProfile";
+import IconsProfile from '../components/Userinfo.init/UserInfoIcons'
+import { IconAt } from '@tabler/icons-react';
 
 function Ajustes() {
 
     return (
-                <Container mt="70" size="sm" className={classes.wrapper}>
-            <Title ta="center" className={classes.title}>
-                Preguntas frecuentes
-            </Title>
+        <>
+            <div> 
+            <Text size="30px" fw={500} ta="center" mt="sm"> Ajustes </Text>
+            </div>
+            
+            <Paper mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" shadow="xl" withBorder className={classes.card}>
+            <IconsProfile/>
+            </Paper>
 
-            <Accordion variant="separated">
-                <Accordion.Item className={classes.item} value="reset-password">
-                    <Accordion.Control>page ajustes</Accordion.Control>
-                    <Accordion.Panel>{placeholder}</Accordion.Panel>
-                </Accordion.Item>
-            </Accordion>
-        </Container>
-        
+            <Paper mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" shadow="xl" withBorder className={classes.card}>
+                
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Modo oscuro/claro </Text> <Demo />
+                </div>
+                <Divider my="md" />
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Nombre </Text> <Button variant="light">Cambiar</Button>
+                </div>
+                <Divider my="md" />
+                
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Contraseña </Text> <Button variant="light">Cambiar</Button>
+                </div>
+                <Divider my="md" />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Foto Perfil </Text> <UploadProfile/>
+                </div>
+                <Divider my="md" />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Email </Text> <Button leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />}>Email</Button>
+                </div>
+                <Divider my="md" />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Agregar Numero Telefonico </Text> <Button variant="default">Agregar</Button>
+                </div>
+            </Paper>
+            <Paper mt="70" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
+        </>
+
     )
 }
 

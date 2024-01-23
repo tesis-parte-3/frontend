@@ -4,21 +4,16 @@ import classes from './Bottnav.module.css';
 import { Settings, Book, Writing, Graph } from 'tabler-icons-react';
 import { Tooltip, MantineProvider, ColorSchemeScript } from '@mantine/core';
 
-import { useColorScheme } from '@mantine/hooks';
-
-
 
 function Bottnav() {
-    const colorScheme = useColorScheme();
     const navigate = useNavigate();
-
 
     return (
         <>
             <ColorSchemeScript defaultColorScheme="auto" />
             <MantineProvider defaultColorScheme="auto">
                 <Box>
-                    <footer className={classes.footer}>
+                    <footer className={classes.footer} style={{ zIndex: 1000 }}>
                         <Flex direction={{ base: 'row' }}
                             gap={{ base: '6%' }}
                             justify={{ base: 'center' }}
@@ -32,11 +27,9 @@ function Bottnav() {
                                         <Book
                                             size={42}
                                             strokeWidth={2}
-                                            color={location.pathname === '/Estudios' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                         />
                                     </div>
                                     <Text
-                                        color={location.pathname === '/Estudios' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                     >
                                         Estudios
                                     </Text>
@@ -50,11 +43,9 @@ function Bottnav() {
                                         <Writing
                                             size={42}
                                             strokeWidth={2}
-                                            color={location.pathname === '/Examen' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                         />
                                     </div>
                                     <Text
-                                        color={location.pathname === '/Examen' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                     >
                                         Examen
                                     </Text>
@@ -68,11 +59,9 @@ function Bottnav() {
                                         <Graph
                                             size={42}
                                             strokeWidth={2}
-                                            color={location.pathname === '/Estadistica' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                         />
                                     </div>
                                     <Text
-                                        color={location.pathname === '/Estadistica' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                     >
                                         Estadistica
                                     </Text>
@@ -86,11 +75,9 @@ function Bottnav() {
                                         <Settings
                                             size={42}
                                             strokeWidth={2}
-                                            color={location.pathname === '/Ajustes' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                         />
                                     </div>
                                     <Text
-                                        color={location.pathname === '/Ajustes' ? '#1D72FE' : colorScheme === 'dark' ? 'white' : 'black'}
                                     >
                                         Ajustes
                                     </Text>
