@@ -46,7 +46,7 @@ function Welcome() {
                             </Button>
                             </Link>
                             
-                            <Text className={classes.descriptionfinal} mt={160}>
+                            <Text className={classes.descriptionfinal} mt={190}>
                             All rights reserved © 2023-2024 
                             </Text>
                         </div>
