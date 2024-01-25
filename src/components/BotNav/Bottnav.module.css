@@ -1,0 +1,44 @@
+.footer {
+    position: fixed;
+    padding: 0px;
+    bottom: 0;
+    width: 100%;
+    height: 13%;
+    
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    border-top: rem(2px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+}
+
+.icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 0px;
+    width: 60px;
+    height: 60px;
+    
+}
+.dark {
+    @mixin dark {
+        display: none;
+        
+    }
+
+    @mixin light {
+        display: block;
+    }
+    
+}
+
+.light {
+    @mixin light {
+        display: none;
+    }
+
+    @mixin dark {
+        display: block;
+    }
+}
