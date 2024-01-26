@@ -7,7 +7,7 @@ function UserInfoIcons() {
         <div>
             <Group wrap="nowrap">
                 <Avatar
-                    src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     size={94}
                     radius="md"
                 />
@@ -15,20 +15,20 @@ function UserInfoIcons() {
                     
 
                     <Text fz="lg" fw={500} className={classes.name}>
-                        Robert Glassbreaker
+                        Nombre
                     </Text>
 
                     <Group wrap="nowrap" gap={10} mt={3}>
                         <IconAt stroke={1.5} size="1rem" className={classes.icon} />
                         <Text fz="xs" c="dimmed">
-                            robert@glassbreaker.io
+                            Email@urbe.edu.ve
                         </Text>
                     </Group>
 
                     <Group wrap="nowrap" gap={10} mt={5}>
                         <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
                         <Text fz="xs" c="dimmed">
-                            +11 (876) 890 56 23
+                            +0 (000) 123 45 67
                         </Text>
                     </Group>
                 </div>

@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import Login from './pages/Login';
 import Info from './pages/Info';
 import Welcome from './pages/Welcome';
@@ -31,7 +30,41 @@ const App: React.FC = () => {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/info" element={<Info />} />
-        <Route path="/Estudios" element={
+        <Route path="/Estudios" element={<Estudios />} />
+        <Route path="/Examen" element={<Examen />} />
+        <Route path="/Estadistica" element={<Estadistica />} />
+        <Route path="/Ajustes" element={<Ajustes />} />
+        <Route path="/principal" element={<Principal />} />
+      </Routes>
+      
+
+    </>
+  );
+};
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Codigo viejo de routas con animaciones hechas con Animated Presence, no se si borrarlo o dejarlo aqui por si acaso.
+{/* <Route path="/Estudios" element={
           <>
             <AnimatePresence>
               <motion.div
@@ -95,11 +128,4 @@ const App: React.FC = () => {
               </motion.div>
             </AnimatePresence>
           </>
-        } />
-      </Routes>
-      
-
-    </>
-  );
-};
-export default App;
+        } /> */}

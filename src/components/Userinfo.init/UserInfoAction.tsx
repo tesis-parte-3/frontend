@@ -8,7 +8,6 @@ import {
 
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-
 import classes from './../../components/Navbar/Navbar.module.css';
 import logo from './../../components/Navbar/logoctm.png';
 import { Avatar, Paper } from '@mantine/core';

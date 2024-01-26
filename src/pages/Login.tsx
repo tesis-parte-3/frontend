@@ -1,4 +1,4 @@
-import { useToggle, upperFirst } from '@mantine/hooks';
+import { useToggle } from '@mantine/hooks';
 import { useState } from 'react'
 import axios from 'axios';
 import { useForm } from '@mantine/form';
@@ -15,7 +15,6 @@ import {
     Stack,
 } from '@mantine/core';
 import Navbar from '../components/Navbar/navbar';
-import { GoogleButton } from './GoogleButton';
 
 interface IRegister {
     name: string;
@@ -118,13 +117,7 @@ function Login() {
                 <Text size="lg" fw={500}>
                     Bienvenido a QuizDrive, {type} con
                 </Text>
-
-                <Group grow mb="md" mt="md">
-                    <GoogleButton radius="xl">Google</GoogleButton>
-                </Group>
-
-                <Divider label="O continua iniciando con correo" labelPosition="center" my="lg" />
-
+                <Divider my="md" />
                 <form onSubmit={formR.onSubmit(() => { })}>
                     <Stack>
                         {type === 'Register' && (
