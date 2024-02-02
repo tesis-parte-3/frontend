@@ -11,6 +11,10 @@ import Bottnav from './components/BotNav/Bottnav';
 import Backmenu from './components/Userinfo.init/backmenu';
 import ErrorPage from './pages/ErrorPage';
 import React from 'react';
+import LicenciaG3 from './pages/Examen_Pages/LicenciaG3/LicenciaG3';
+import LicenciaG2 from './pages/Examen_Pages/LicenciaG2/LicenciaG2';
+import LicenciaG5 from './pages/Examen_Pages/LicenciaG5/LicenciaG5';
+import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_examen';
 
 
 
@@ -20,21 +24,31 @@ const App: React.FC = () => {
   const location = useLocation();
   const showBottnav = ['/Examen', '/Estadistica', '/Ajustes', '/principal', '/Estudios'].includes(location.pathname);
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
+  const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
+
 
   return (
     <>
       {showBackmenu && <Backmenu />}
       {showBottnav && <Bottnav />}
+      {backmenubar && <Backmenubar_examen />}
       <Routes location={location} key={location.pathname}>
         <Route path='/*' element={<ErrorPage/>}/>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/info" element={<Info />} />
         <Route path="/Estudios" element={<Estudios />} />
-        <Route path="/Examen" element={<Examen />} />
+        
         <Route path="/Estadistica" element={<Estadistica />} />
         <Route path="/Ajustes" element={<Ajustes />} />
         <Route path="/principal" element={<Principal />} />
+
+
+        {/* Listado de routes para examenes de Licencias */}
+        <Route path="/Examen" element={<Examen />} />
+        <Route path="/Examen/LicenciaG3" element={<LicenciaG3 />} />
+        <Route path="/Examen/LicenciaG2" element={<LicenciaG2 />} />
+        <Route path="/Examen/LicenciaG5" element={<LicenciaG5 />} />
       </Routes>
       
 

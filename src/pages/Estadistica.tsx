@@ -84,7 +84,7 @@ function Estadistica() {
                         </Text>
                         <Group justify="space-between" mt="xs">
                             <Text fz="sm">
-                                Licencia 3B
+                                Licencia G3
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 Progress
@@ -101,7 +101,7 @@ function Estadistica() {
                         {/* Dividor de lecciones */}
                         <Group justify="space-between" mt="xs">
                             <Text fz="sm">
-                                Licencia 1B
+                                Licencia G2
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 Progress
@@ -118,7 +118,7 @@ function Estadistica() {
                         {/* Dividor de lecciones */}
                         <Group justify="space-between" mt="xs">
                             <Text fz="sm">
-                                Licencia 5B
+                                Licencia G5
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 Progress

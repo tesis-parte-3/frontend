@@ -4,7 +4,7 @@ import classes from './UserInfoIcons.module.css';
 import { useState, useEffect } from 'react';
 
 function UserInfoIcons() {
-
+            //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
     const [phoneNumber, setPhoneNumber] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
