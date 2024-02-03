@@ -1,7 +1,7 @@
 import { ActionIcon, useMantineColorScheme, useComputedColorScheme } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import cx from 'clsx';
-import classes from './Demo.module.css';
+import classes from './demo.module.css';
 
 
 function Demo() {
