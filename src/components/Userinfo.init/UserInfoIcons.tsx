@@ -5,26 +5,8 @@ import { useState, useEffect } from 'react';
 
 function UserInfoIcons() {
             //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    useEffect(() => {
-        const storedPhoneNumber = localStorage.getItem('phoneNumber');
-        const storedName = localStorage.getItem('name');
-        const storedEmail = localStorage.getItem('email');
-
-        if (storedPhoneNumber) {
-            setPhoneNumber(storedPhoneNumber);
-        }
-
-        if (storedName) {
-            setName(storedName);
-        }
-
-        if (storedEmail) {
-            setEmail(storedEmail);
-        }
-    }, []);
+            // @ts-ignore
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')).user);
 
     return (
         <div>
@@ -38,20 +20,20 @@ function UserInfoIcons() {
 
 
                     <Text fz="lg" fw={500} className={classes.name}>
-                        {name}
+                        {user.name}
                     </Text>
 
                     <Group wrap="nowrap" gap={10} mt={3}>
                         <IconAt stroke={1.5} size="1rem" className={classes.icon} />
                         <Text fz="xs" c="dimmed">
-                            {email}
+                            {user.email}
                         </Text>
                     </Group>
 
                     <Group wrap="nowrap" gap={10} mt={5}>
                         <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
                         <Text fz="xs" c="dimmed">
-                            {phoneNumber}
+                            04121688466
                         </Text>
                     </Group>
                 </div>

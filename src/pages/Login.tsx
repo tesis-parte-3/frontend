@@ -36,8 +36,9 @@ function Login() {
       email: email,
       password: password
     })
-      .then((res) => {
+      .then((res: any) => {
         console.log(res);
+        localStorage.setItem("user", JSON.stringify(res.data))
         window.location.replace('/principal')
       })
       .catch((err) => {
