@@ -26,6 +26,7 @@ interface IRegister {
 }
 
 function Register() {
+  // @ts-ignore
   const [error, setError] = useState<string | null>(null)
   const form = useForm<IRegister>({
     initialValues: {
