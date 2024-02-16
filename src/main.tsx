@@ -3,20 +3,16 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
-import { Provider as ReduxProvider } from 'react-redux'
-import { store } from './store.ts'
 import '@mantine/core/styles.css';
 
 
 function Main() {
   return (
-    <ReduxProvider store={store}>
       <MantineProvider >
         <Router>
           <App />
         </Router>
       </MantineProvider>
-    </ReduxProvider>
   )
 }
 

@@ -50,7 +50,8 @@ function Estadistica() {
                 duration={500}
                 timingFunction="ease"
             >
-                {(styles) => <div style={styles}><Paper shadow="xl" mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder className={classes.card}>
+                {(styles) => <div style={styles}>
+                    <Paper shadow="xl" mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder className={classes.card}>
                     <Group justify="space-between">
                         <Group align="flex-end" gap="xs">
                             <Text fz="xl" fw={700}>

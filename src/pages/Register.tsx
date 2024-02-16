@@ -71,6 +71,7 @@ function Register() {
     axios.post('http://localhost:3000/users', values)
       .then(function (response) {
         console.log(response);
+        localStorage.setItem("user", JSON.stringify(response.data))
         window.location.replace("/principal")
       })
       .catch(function (error) {

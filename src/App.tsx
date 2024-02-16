@@ -15,6 +15,7 @@ import LicenciaG3 from './pages/Examen_Pages/LicenciaG3/LicenciaG3';
 import LicenciaG2 from './pages/Examen_Pages/LicenciaG2/LicenciaG2';
 import LicenciaG5 from './pages/Examen_Pages/LicenciaG5/LicenciaG5';
 import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_examen';
+import Register from './pages/Register'
 
 
 
@@ -38,10 +39,10 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/info" element={<Info />} />
         <Route path="/Estudios" element={<Estudios />} />
-        
         <Route path="/Estadistica" element={<Estadistica />} />
         <Route path="/Ajustes" element={<Ajustes />} />
         <Route path="/principal" element={<Principal />} />
+        <Route path="/Register" element={<Register />} />
 
 
         {/* Listado de routes para examenes de Licencias */}

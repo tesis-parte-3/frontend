@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Transition } from '@mantine/core';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon, Paper } from '@mantine/core';
-import classes from './Examen_Pages/BadgeCard.module.css';
 import { Link } from 'react-router-dom';
+import classes from './Examen_Pages/BadgeCard.module.css';
 
 const mockdata = {
     imageg3:
@@ -95,14 +95,14 @@ function Examen() {
 
                         <Card.Section className={classes.section} mt="md">
                             <Group justify="apart">
-                                <Text fz="lg" fw={500}>
+                                <Text fz="lg" fw={500} pl="lg" pr="lg">
                                     {titleg3}
                                 </Text>
                                 <Badge size="sm" variant="light">
                                     {countryg3}
                                 </Badge>
                             </Group>
-                            <Text fz="sm" mt="xs">
+                            <Text fz="sm" mt="xs" pl="lg" pr="lg">
                                 {descriptiong3}
                             </Text>
                         </Card.Section>
@@ -135,14 +135,14 @@ function Examen() {
 
                         <Card.Section className={classes.section} mt="md">
                             <Group justify="apart">
-                                <Text fz="lg" fw={500}>
+                                <Text fz="lg" fw={500} pl="lg" pr="lg">
                                     {titleg2}
                                 </Text>
-                                <Badge size="sm" variant="light">
+                                <Badge size="sm" variant="light" ml="lg" mr="lg">
                                     {countryg2}
                                 </Badge>
                             </Group>
-                            <Text fz="sm" mt="xs">
+                            <Text fz="sm" mt="xs" pl="lg" pr="lg">
                                 {descriptiong2}
                             </Text>
                         </Card.Section>
@@ -175,14 +175,14 @@ function Examen() {
 
                         <Card.Section className={classes.section} mt="md">
                             <Group justify="apart">
-                                <Text fz="lg" fw={500}>
+                                <Text fz="lg" fw={500} pl="lg" pr="lg"  >
                                     {titleg5}
                                 </Text>
-                                <Badge size="sm" variant="light">
+                                <Badge size="sm" variant="light" ml="lg" mr="lg">
                                     {countryg5}
                                 </Badge>
                             </Group>
-                            <Text fz="sm" mt="xs">
+                            <Text fz="sm" mt="xs" pl="lg" pr="lg">
                                 {descriptiong5}
                             </Text>
                         </Card.Section>

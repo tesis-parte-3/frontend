@@ -1,7 +1,7 @@
 import { Avatar, Text, Group } from '@mantine/core';
 import { IconPhoneCall, IconAt } from '@tabler/icons-react';
 import classes from './UserInfoIcons.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function UserInfoIcons() {
             //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
