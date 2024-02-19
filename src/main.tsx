@@ -4,7 +4,8 @@ import App from './App.tsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css';
-import * as ServiceWorker from './pages/serviceWorker.tsx'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 
 
 function Main() {
@@ -23,4 +24,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 
-ServiceWorker.register()
+serviceWorkerRegistration.register();
+reportWebVitals();
