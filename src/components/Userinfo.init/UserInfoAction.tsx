@@ -25,10 +25,6 @@ function UserInfoAction() {
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
                     <img src={logo} alt="Logo" className={classes.logito} />
-                    <Group visibleFrom="sm">
-                        <Button variant="default">Log in</Button>
-                        <Button>Sign up</Button>
-                    </Group>
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
                 </Group>
             </header>

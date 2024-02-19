@@ -3,6 +3,7 @@ import { FileButton, Button, Group, Text } from '@mantine/core';
 
 function UploadProfile() {
     const [file, setFile] = useState<File | null>(null);
+    
     return (
         <>
             <Group justify="center">

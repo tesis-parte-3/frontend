@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Transition } from '@mantine/core';
-import { Card, Overlay, Button, Text } from '@mantine/core';
+import { Paper, Text, Title, Button } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import classes from '../assets/css/Estudios.module.css';
-
-
 
 function Estudios() {
     const [isMounted, setIsMounted] = useState(false);
@@ -19,23 +18,22 @@ function Estudios() {
                 timingFunction="ease"
             >
                 {(styles) => <div style={styles}>
-                    <Card m="xl" radius="md" className={classes.carta}>
-                        <Overlay className={classes.superoverlay} opacity={0.55} zIndex={0} />
-
-                        <div className={classes.contenido}>
-                            <Text size="lg" fw={700} className={classes.titulo}>
-                                Plan & save
+                    <Paper shadow="md" p="xl" radius="md" className={classes.card} m="lg">
+                        <div>
+                            <Text className={classes.category} size="xs" mb="lg" fw={700}>
+                                Autor Prof. Magally Velázquez
                             </Text>
-
-                            <Text size="sm" className={classes.descripcion}>
-                                Save up to 25% at Fifth Season Hotels in Europe, the Middle East, Africa and Asia Pacific
-                            </Text>
-
-                            <Button className={classes.accion} variant="white" color="dark" size="xs" style={{position: "absolute"}}>
-                                Book now
-                            </Button>
+                            <Title order={3} className={classes.title}>
+                                Libro Diccionario vial
+                            </Title>
                         </div>
-                    </Card>
+                        <Link to="/LibroDiccionarioVial">
+                            <Button variant="filled" color="orange" mt="25%">
+                                Leer libro
+                            </Button>
+                        </Link>
+                    </Paper>
+                    
                 </div>}
             </Transition>
         </>

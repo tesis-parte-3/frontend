@@ -15,7 +15,9 @@ import LicenciaG3 from './pages/Examen_Pages/LicenciaG3/LicenciaG3';
 import LicenciaG2 from './pages/Examen_Pages/LicenciaG2/LicenciaG2';
 import LicenciaG5 from './pages/Examen_Pages/LicenciaG5/LicenciaG5';
 import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_examen';
+import Backmenubar_estudios from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios';
 import Register from './pages/Register'
+import LibroDiccionarioVial from './pages/Aprendizaje_Pages/LibroDiccionarioVial';
 
 
 
@@ -26,6 +28,7 @@ const App: React.FC = () => {
   const showBottnav = ['/Examen', '/Estadistica', '/Ajustes', '/principal', '/Estudios'].includes(location.pathname);
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
+  const backmenubar2 = ['/LibroDiccionarioVial'].includes(location.pathname);
 
 
   return (
@@ -33,6 +36,7 @@ const App: React.FC = () => {
       {showBackmenu && <Backmenu />}
       {showBottnav && <Bottnav />}
       {backmenubar && <Backmenubar_examen />}
+      {backmenubar2 && <Backmenubar_estudios />}
       <Routes location={location} key={location.pathname}>
         <Route path='/*' element={<ErrorPage/>}/>
         <Route path="/" element={<Welcome />} />
@@ -44,6 +48,8 @@ const App: React.FC = () => {
         <Route path="/principal" element={<Principal />} />
         <Route path="/Register" element={<Register />} />
 
+        {/* Pages para los libros de aprendizaje */}
+        <Route path="/LibroDiccionarioVial" element={<LibroDiccionarioVial />} />
 
         {/* Listado de routes para examenes de Licencias */}
         <Route path="/Examen" element={<Examen />} />

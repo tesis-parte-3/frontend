@@ -7,6 +7,8 @@ function UserInfoIcons() {
             //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
             // @ts-ignore
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')).user);
+    const phoneNumber = localStorage.getItem('phoneNumber') || 'No hay número de teléfono';
+
 
     return (
         <div>
@@ -33,7 +35,7 @@ function UserInfoIcons() {
                     <Group wrap="nowrap" gap={10} mt={5}>
                         <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
                         <Text fz="xs" c="dimmed">
-                            04121688466
+                        {phoneNumber}
                         </Text>
                     </Group>
                 </div>
