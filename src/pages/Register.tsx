@@ -14,7 +14,6 @@ import {
   Stack,
 } from '@mantine/core';
 import Navbar from '../components/Navbar/navbar';
-import { GoogleButton } from './GoogleButton';
 
 interface IRegister {
   name: string;
@@ -91,7 +90,6 @@ function Register() {
         </Text>
 
         <Group grow mb="md" mt="md">
-          <GoogleButton radius="xl">Google</GoogleButton>
         </Group>
 
         <Divider label="O continua iniciando con correo" labelPosition="center" my="lg" />

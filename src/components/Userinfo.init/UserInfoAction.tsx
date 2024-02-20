@@ -5,19 +5,30 @@ import {
     Box,
     Burger,
     Drawer,
-
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './../../components/Navbar/Navbar.module.css';
 import logo from './../../components/Navbar/logoctm.png';
 import { Avatar, Paper } from '@mantine/core';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
+interface IUser {
+    name: string;
+    email: string;
+}
 
 
 function UserInfoAction() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+ // @ts-ignore
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
 
 
+    const handleLogout = () => {
+        // Eliminar el elemento 'user' del localStorage
+        localStorage.removeItem('user');
+    };
 
 
     return (
@@ -38,24 +49,27 @@ function UserInfoAction() {
                 hiddenFrom="sm"
                 zIndex={1000000}
             >
-                    <Paper radius="md" withBorder p="lg" bg="var(--mantine-color-body)">
-                        <Avatar
-                            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
-                            size={120}
-                            radius={120}
-                            mx="auto"
-                        />
-                        <Text ta="center" fz="lg" fw={500} mt="md">
-                            Nombre
-                        </Text>
-                        <Text ta="center" c="dimmed" fz="sm">
-                            Correo electronico X
-                        </Text>
+                <Paper radius="md" withBorder p="lg" bg="var(--mantine-color-body)">
+                    <Avatar
+                        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+                        size={120}
+                        radius={120}
+                        mx="auto"
+                    />
 
-                        <Button variant="filled" color="red" fullWidth mt="md">
+                    <Text ta="center" fz="lg" fw={500} mt="md">
+                        {user?.name}
+                    </Text>
+                    <Text ta="center" c="dimmed" fz="sm">
+                    {user?.email}
+                    </Text>
+
+                    <Link to="/">
+                        <Button variant="filled" color="red" fullWidth mt="md" onClick={handleLogout}>
                             Cerrar Sesion
                         </Button>
-                    </Paper>
+                    </Link>
+                </Paper>
             </Drawer>
         </Box>
     );

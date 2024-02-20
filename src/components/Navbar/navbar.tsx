@@ -11,6 +11,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import classes from './Navbar.module.css';
 import logo from './logoctm.png';
+import { Link } from 'react-router-dom';
 
 
 function Navbar() {
@@ -42,7 +43,7 @@ function Navbar() {
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
           <Group justify="center" grow pb="xl" px="md">
-            <Button >Inicio de seccion</Button>
+          <Link to="/login"><Button fullWidth >Inicio de seccion</Button></Link>
           </Group>
         </ScrollArea>
       </Drawer>
