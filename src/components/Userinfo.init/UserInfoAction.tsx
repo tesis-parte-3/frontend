@@ -11,13 +11,7 @@ import classes from './../../components/Navbar/Navbar.module.css';
 import logo from './../../components/Navbar/logoctm.png';
 import { Avatar, Paper } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-interface IUser {
-    name: string;
-    email: string;
-}
-
+import { useState } from 'react';
 
 function UserInfoAction() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
