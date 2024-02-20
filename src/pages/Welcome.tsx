@@ -59,7 +59,8 @@ function Welcome() {
                                         gradient={{ from: 'pink', to: 'yellow' }}
                                         size="xl"
                                         className={classes.control}
-                                        mt={70}
+                                        style={{ position: 'absolute',bottom: '0'}}
+                                        mb="20%"
 
                                     >
                                         Empezar
