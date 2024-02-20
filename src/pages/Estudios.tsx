@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Transition } from '@mantine/core';
 import { Paper, Text, Title, Button, Center, Divider } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import classes from '../assets/css/Estudios.module.css';
 
 function Estudios() {
     const [isMounted, setIsMounted] = useState(false);
