@@ -27,7 +27,7 @@ function Principal() {
                 {(styles) => <div style={styles}>
                     <Container mt="70" size="sm" className={classes.wrapper}>
                         <Title ta="center" className={classes.title}>
-                            Principal page
+                            Principal page carita
                         </Title>
 
                         <Accordion variant="separated">

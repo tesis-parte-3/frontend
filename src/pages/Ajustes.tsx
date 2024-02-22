@@ -1,10 +1,11 @@
 import Demo from "../function/modetheme/Demo";
-import { Paper, Text, Button, Transition, Modal, TextInput, PasswordInput } from '@mantine/core';
+import { Paper, Text, Button, Transition, Modal, TextInput, PasswordInput, Divider, Group, Anchor } from '@mantine/core';
 import IconsProfile from '../components/Userinfo.init/UserInfoIcons';
 import { useEffect, useState } from 'react';
 import { useForm } from '@mantine/form'
 import { useDisclosure } from '@mantine/hooks';
 import axios from "axios";
+import UploadProfile from '../components/Userinfo.init/UploadProfile';
 
 interface IGroupText {
   label: string;
@@ -22,7 +23,15 @@ interface IUser {
 
 function Ajustes() {
   const [isMounted, setIsMounted] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
+  
+  const [ModalTelefono, setModalTelefono] = useState(false);
+  function handleConfirm() {
+    localStorage.setItem('phoneNumber', phoneNumber);
+    // Cerrar el modal
+  }
+  
   // @ts-ignore
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
 
@@ -74,15 +83,20 @@ function Ajustes() {
   )
 
   // @ts-ignore
-  const handleChange = (values:  IUser) => {
+  const handleChange = (values: IUser) => {
     axios.put(`http://localhost:3000/users/${user.id}`, {
       user: values
+<<<<<<< HEAD
       
     }).then(() => {
       
       
 
       localStorage.setItem("user", JSON.stringify({user:values})) 
+=======
+    }).then((res) => {
+      localStorage.setItem("user", JSON.stringify({ user: res.data }))
+>>>>>>> 29c1369b8ad1453d2bdb2daaa55d656dccd86b45
       window.location.reload()
     })
     .catch((err) => {
@@ -133,7 +147,7 @@ function Ajustes() {
               </div>
               <GroupText label="Nombre" content={user.name} />
               <GroupText label="Email" content={user.email} />
-              <GroupText label="Telefono" content="04121688466" />
+              <GroupText label="Telefono" content={localStorage.getItem('phoneNumber') || 'N/A'} />
               <Button
                 fullWidth
                 variant="light"
@@ -144,13 +158,50 @@ function Ajustes() {
               >
                 Actualizar datos de cuenta
               </Button>
+              <Divider my="md" />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Agregar Numero Telefonico </Text> <Button variant="default" onClick={() => setModalTelefono(true)}>Agregar</Button>
+              </div>
+              <Divider my="md" />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Text> Foto Perfil </Text> <UploadProfile />
+              </div>
+
             </Paper>
           </div>
         }
       </Transition>
       {/* Modales de ajustes */}
-        {/* Modal de cambio */}
-        <Modal
+      {/* Modal de agregado de telefono. */}
+      <Modal opened={ModalTelefono} onClose={() => setModalTelefono(false)} title="">
+        <Text size="30px" fw={500} ta="center" mb="xl">Agregar Numero</Text>
+        <Text size="30px" fw={500} ta="center" mb="xl">Telefonico</Text>
+        <Paper radius="md" mb="xl" p="lg" withBorder h="auto" w="85%" mx="auto">
+
+          <form >
+            <TextInput
+              required
+              label="Numero telefonico"
+              placeholder="+0 (000) 123 45 67"
+              error=""
+              radius="md"
+              type="tel"
+              value={phoneNumber}
+              onChange={e => setPhoneNumber(e.target.value)}
+            />
+            <Group justify="space-between" mt="lg">
+              <Anchor component="button" type="button" c="dimmed" size="xs">
+                Agregar Numero
+              </Anchor>
+              <Button type="submit" radius="xl" onClick={handleConfirm} >
+                Confirmar
+              </Button>
+            </Group>
+          </form>
+        </Paper>
+      </Modal>
+      {/* Modal de cambio */}
+      <Modal
         opened={opened}
         onClose={close}
         centered

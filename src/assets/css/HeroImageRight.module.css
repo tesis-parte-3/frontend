@@ -1,11 +1,17 @@
 .root {
     background-color: #1d4787;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-position: center;
-    background-image: linear-gradient(240deg, rgba(130, 201, 30, 0) 10%, #062343 99%),
-        url("../img/welcomebg.jpg");
+    background-image: linear-gradient(220deg, rgba(130, 201, 30, 0) 5%, #062343 99%),
+        url("https://drivinginstructionsmiramar.com/images/secondary_60ad0f374567e.jpg");
     padding-top: calc(var(--mantine-spacing-xl) * 1);
     padding-bottom: calc(var(--mantine-spacing-xl) * 1);
+    height: calc(100vh - 60px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .inner {
@@ -59,6 +65,7 @@
         max-width: 100%;
     }
 }
+
 .descriptionfinal {
     color: var(--mantine-color-white);
     opacity: 1;
