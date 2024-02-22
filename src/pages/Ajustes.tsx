@@ -45,7 +45,7 @@ function Ajustes() {
       name: `${user.name}`,
       email: `${user.email}`,
       password: '',
-      id: user.id
+      id: user.id,
       
       // currentPassword: '',
       // phone: ''
@@ -86,17 +86,8 @@ function Ajustes() {
   const handleChange = (values: IUser) => {
     axios.put(`http://localhost:3000/users/${user.id}`, {
       user: values
-<<<<<<< HEAD
-      
-    }).then(() => {
-      
-      
-
-      localStorage.setItem("user", JSON.stringify({user:values})) 
-=======
     }).then((res) => {
-      localStorage.setItem("user", JSON.stringify({ user: res.data }))
->>>>>>> 29c1369b8ad1453d2bdb2daaa55d656dccd86b45
+      localStorage.setItem("user", JSON.stringify({ user:values }))
       window.location.reload()
     })
     .catch((err) => {
