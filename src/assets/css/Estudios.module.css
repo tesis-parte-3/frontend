@@ -1,0 +1,26 @@
+.card {
+  height: rem(240px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../img/LibroDiccionario.png);
+}
+
+.title {
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+  color: var(--mantine-color-white);
+  line-height: 1.2;
+  font-size: rem(32px);
+  margin-top: var(--mantine-spacing-xs);
+}
+
+.category {
+  color: var(--mantine-color-white);
+  font-weight: 700;
+  text-transform: uppercase;
+}

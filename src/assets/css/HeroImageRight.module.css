@@ -1,0 +1,90 @@
+.root {
+    background-color: #1d4787;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: linear-gradient(220deg, rgba(130, 201, 30, 0) 5%, #062343 99%),
+        url("https://drivinginstructionsmiramar.com/images/secondary_60ad0f374567e.jpg");
+    padding-top: calc(var(--mantine-spacing-xl) * 1);
+    padding-bottom: calc(var(--mantine-spacing-xl) * 1);
+    height: calc(100vh - 60px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $mantine-breakpoint-md) {
+        flex-direction: column;
+    }
+}
+
+.image {
+    @media (max-width: $mantine-breakpoint-md) {
+        display: none;
+    }
+}
+
+.content {
+    padding-top: calc(var(--mantine-spacing-xl) * 2);
+    padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+    margin-right: calc(var(--mantine-spacing-xl) * 3);
+
+    @media (max-width: $mantine-breakpoint-md) {
+        margin-right: 0;
+    }
+}
+
+.title {
+    color: var(--mantine-color-white);
+    font-family:
+        Greycliff CF,
+        var(--mantine-font-family);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: rem(500px);
+    font-size: rem(48px);
+
+    @media (max-width: $mantine-breakpoint-md) {
+        max-width: 100%;
+        font-size: rem(34px);
+        line-height: 1.15;
+    }
+}
+
+.description {
+    color: var(--mantine-color-white);
+    opacity: 0.99;
+    max-width: rem(500px);
+
+    @media (max-width: $mantine-breakpoint-md) {
+        max-width: 100%;
+    }
+}
+
+.descriptionfinal {
+    color: var(--mantine-color-white);
+    opacity: 1;
+    max-width: rem(500px);
+
+    @media (max-width: $mantine-breakpoint-md) {
+        max-width: 100%;
+    }
+}
+
+.control {
+    padding-left: rem(50px);
+    padding-right: rem(50px);
+    font-family:
+        Greycliff CF,
+        var(--mantine-font-family);
+    font-size: rem(22px);
+
+    @media (max-width: $mantine-breakpoint-md) {
+        width: 100%;
+    }
+}
