@@ -21,7 +21,7 @@ function QuizzCard({level}: IQuizzCard) {
   const [score, setScore] = useState<number>(0)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/exams?level=${level}`).then((res) => {
+    axios.get(`https://api.ismoxpage.online/exams?level=${level}`).then((res) => {
       setQuestions(res.data)
       setLoading(false)
       console.log(res.data)
