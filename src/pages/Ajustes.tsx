@@ -15,8 +15,9 @@ interface IGroupText {
 interface IUser {
   name: string;
   email: string;
-  newPassword: string;
-  currentPassword: string;
+  password: string;
+  id: number;
+  // currentPassword: string;
   // phone: string;
 }
 
@@ -41,39 +42,57 @@ function Ajustes() {
   // @ts-ignore
   const form = useForm<IUser>({
     initialValues: {
-      name: '',
-      email: '',
-      newPassword: '',
-      currentPassword: '',
+      name: `${user.name}`,
+      email: `${user.email}`,
+      password: '',
+      id: user.id,
+      
+      // currentPassword: '',
       // phone: ''
     },
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       name: (values) => (values.length < 2 ? 'Name is too short' : null),
-      // newPassword: (values) => (
+      password: (value) => (value.length < 8 && value.length > 0 || value.length > 50 ? 'La contraseña debe de estar entre 8 a 50 caracteres' : null) 
+      // {
+        
+        
+      //   if (value.length < 8 || value.length > 50) {
+      //     return 'La contraseña debe de estar entre 8 a 50 caracteres';
+      //   }
+      //   return null;
+      },
+
+
+
+      // password: (values) => (
       //   values.length < 6 ? 'Password is too short' : (
-      //     values.length > 50 ? 'Password is too long' : (
-      //       values === form.values.currentPassword ? 'New password should be different from current' : null
-      //     )
+      //     values.length > 50 ? 'Password is too long' :
+      //     // (
+      //     //   values === form.values.currentPassword ? 'New password should be different from current' : null
+      //     // )
       //   )
       // ),
-      currentPassword: (values) => (values.length < 6 ? 'Password is too short' : (
-        values.length > 50 ? 'Password is too long' : (
-          values === form.values.newPassword ? 'New password should be different from current' : null
-        )
-      )),
+      // currentPassword: (values) => (values.length < 6 ? 'Password is too short' : (
+      //   values.length > 50 ? 'Password is too long' : (
+      //     values === form.values.password ? 'New password should be different from current' : null
+      //   )
+      // )),
       // phone: (values) => (values.length < 6 ? 'Phone is too short' : null),
     }
-  })
+  )
 
   // @ts-ignore
   const handleChange = (values: IUser) => {
     axios.put(`http://localhost:3000/users/${user.id}`, {
       user: values
     }).then((res) => {
-      localStorage.setItem("user", JSON.stringify({ user: res.data }))
+      localStorage.setItem("user", JSON.stringify({ user:values }))
       window.location.reload()
     })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   const GroupText = ({ label, content }: IGroupText) => {
@@ -182,6 +201,8 @@ function Ajustes() {
         <form onSubmit={form.onSubmit((values: IUser) => handleChange(values))}>
           {/* <UploadProfile /> */}
           <TextInput
+            
+            
             label="Nombre"
             placeholder="Nombre"
             mb={20}
@@ -193,18 +214,20 @@ function Ajustes() {
             mb={20}
             {...form.getInputProps('email')}
           />
-          <PasswordInput
+          {/* <PasswordInput
             label="Contraseña actual"
             placeholder="Contraseña actual"
             mb={20}
             {...form.getInputProps('currentPassword')}
-          />
-          {/* <PasswordInput
+          /> */}
+          <PasswordInput
+          
             label="Nueva contraseña"
             placeholder="Nueva contraseña"
             mb={20}
-            {...form.getInputProps('newPassword')}
-          /> */}
+            
+            {...form.getInputProps('password')}
+          />
           {/* <TextInput
             label="Telefono"
             placeholder="Telefono"
@@ -220,8 +243,10 @@ function Ajustes() {
             mt={20}
           >
             Actualizar
+            
           </Button>
         </form>
+        
       </Modal>
     </>
 
