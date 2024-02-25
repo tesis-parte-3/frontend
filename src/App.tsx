@@ -17,6 +17,7 @@ import LicenciaG5 from './pages/Examen_Pages/LicenciaG5/LicenciaG5';
 import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_examen';
 import Backmenubar_estudios from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios';
 import Register from './pages/Register'
+import Admin from './pages/Admin'
 
 //RUTAS PARA LOS PDFS
 import LibroDiccionarioVial from './pages/Aprendizaje_Pages/LibroDiccionarioVial';
@@ -47,6 +48,7 @@ import Reductor_Velocidad from './pages/Aprendizaje_Pages/Reductor_Velocidad'
 import Ciclorruta from './pages/Aprendizaje_Pages/Ciclorruta'
 import Canales_Publicos from './pages/Aprendizaje_Pages/Canales_Publicos'
 import Dispositivos_Ferri from './pages/Aprendizaje_Pages/Dispositivos_Ferri'
+import Recuperar from './pages/RecuperarC'
 
 
 
@@ -76,6 +78,9 @@ const App: React.FC = () => {
         <Route path="/Ajustes" element={<Ajustes />} />
         <Route path="/principal" element={<Principal />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Admin" element={<Admin />} />
+        <Route path="/Recuperar" element={<Recuperar />} />
+
 
         {/* Pages para los libros de aprendizaje */}
         <Route path="/LibroDiccionarioVial" element={<LibroDiccionarioVial />} />

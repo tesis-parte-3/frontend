@@ -146,7 +146,10 @@ function Register() {
 
           <Group justify="space-between" mt="xl">
             <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/login")} size="xs">
-              Ya tienes una cuenta? Login
+              Ya tienes una cuenta? Logeate
+            </Anchor>
+            <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/recuperar")} size="xs">
+              No recuerdas tu contraseña?
             </Anchor>
             <Button type="submit" radius="xl" onClick={() => handleRegister(form.values)} >
               Registrate
