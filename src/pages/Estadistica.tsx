@@ -390,7 +390,7 @@ function Estadistica() {
                     </Paper>
                     <Paper shadow="xl" mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder className={classes.card}>
                         <Text ta="center" fw={700} className={classes.title}>
-                            Libros de estudio
+                            Estudios Autodidactas
                         </Text>
                         <Text c="dimmed" ta="center" fz="sm">
                             Progreso de las Unidades de estudio

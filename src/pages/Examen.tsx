@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Transition } from '@mantine/core';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon, Paper } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, Button, ActionIcon, Paper, Affix, Transition, rem } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import classes from './Examen_Pages/BadgeCard.module.css';
+import { IconArrowDown } from '@tabler/icons-react';
+import { useWindowScroll } from '@mantine/hooks';
 
 const mockdata = {
     imageg3:
@@ -77,6 +78,7 @@ function Examen() {
     const handleClick3 = () => {
         setSelected3(!selected3);
     };
+    const [scroll, scrollTo] = useWindowScroll();
 
 
     return (
@@ -88,6 +90,20 @@ function Examen() {
                 timingFunction="ease"
             >
                 {(styles) => <div style={styles}>
+                <Text ta="center"></Text>
+                    <Affix position={{ bottom: "20%", right: -20 }}>
+                        <Transition transition="slide-up" mounted={scroll.y < 100}>
+                            {(transitionStyles) => (
+                                <Button
+                                    leftSection={<IconArrowDown style={{ width: rem(16), height: rem(16) }} />}
+                                    style={transitionStyles}
+                                    onClick={() => scrollTo({ y: 2000 })}
+                                    color='cyan'
+                                >
+                                </Button>
+                            )}
+                        </Transition>
+                    </Affix>
                     <Card withBorder mx="xl" mt="lg" radius="md" p="md" className={classes.card}>
                         <Card.Section>
                             <Image src={imageg3} alt={titleg3} height={180} />

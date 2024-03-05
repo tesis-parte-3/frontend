@@ -49,6 +49,7 @@ import Ciclorruta from './pages/Aprendizaje_Pages/Ciclorruta'
 import Canales_Publicos from './pages/Aprendizaje_Pages/Canales_Publicos'
 import Dispositivos_Ferri from './pages/Aprendizaje_Pages/Dispositivos_Ferri'
 import Recuperar from './pages/RecuperarC'
+import Autodidactas from './pages/Estudios_Pages/Estudios_Autodidactas/Autodidactas'
 
 
 
@@ -59,7 +60,7 @@ const App: React.FC = () => {
   const showBottnav = ['/Examen', '/Estadistica', '/Ajustes', '/principal', '/Estudios'].includes(location.pathname);
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
-  const backmenubar2 = ['/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
+  const backmenubar2 = ['/Autodidactas','/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
 
 
   return (
@@ -80,6 +81,7 @@ const App: React.FC = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Recuperar" element={<Recuperar />} />
+        <Route path="/Autodidactas" element={<Autodidactas />} />
 
 
         {/* Pages para los libros de aprendizaje */}

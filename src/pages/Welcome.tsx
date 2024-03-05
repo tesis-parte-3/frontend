@@ -24,27 +24,8 @@ function Welcome() {
                                         QuizDrive
                                     </Text>{' '}
                                     
-                                    Estudio Vial de <Text
-                                        component="span"
-                                        inherit
-                                        color='Yellow'
-                                    >
-                                        Ven
-                                    </Text>
-                                    <Text
-                                        component="span"
-                                        inherit
-                                        color='blue'
-                                    >
-                                        ezu
-                                    </Text>
-                                    <Text
-                                        component="span"
-                                        inherit
-                                        color='red'
-                                    >
-                                        ela
-                                    </Text>
+                                    Estudio Vial de Venezuela
+                                    
                                 </Title>
 
                                 <Text className={classes.description} mt={30} color='white'>
@@ -56,7 +37,7 @@ function Welcome() {
                                 <Link to="/login">
                                     <Button
                                         variant="gradient"
-                                        gradient={{ from: 'pink', to: 'yellow' }}
+                                        gradient={{ from: 'Blue', to: 'Cyan' }}
                                         size="xl"
                                         className={classes.control}
                                         style={{ position: 'absolute',bottom: '0'}}
