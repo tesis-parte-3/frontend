@@ -6,6 +6,7 @@ import classes from './Examen_Pages/BadgeCard.module.css';
 import { IconArrowDown } from '@tabler/icons-react';
 import { useWindowScroll } from '@mantine/hooks';
 
+
 const mockdata = {
     imageg3:
         'https://images.netdirector.co.uk/gforces-auto/image/upload/w_600,h_450,q_auto,c_fill,f_auto,fl_lossy/auto-client/af63a702cf7ae2dfe4c6d0c78a691c26/toyota_gr_yaris_038_2_scaled_1.jpg',

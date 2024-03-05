@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Transition } from '@mantine/core';
+import QuizzCard from '../../../components/Examen/QuizzCard';
 
 function LicenciaG5() {
     const [isMounted, setIsMounted] = useState(false);
@@ -15,8 +16,9 @@ function LicenciaG5() {
                 duration={500}
                 timingFunction="ease"
             >{(styles) => <div style={styles}>
-                <h1>Aqui van las listas de examenes de G5</h1>
-                </div>}
+                <QuizzCard level="grado5" />
+                </div>
+                }
             </Transition>
         </>
     )

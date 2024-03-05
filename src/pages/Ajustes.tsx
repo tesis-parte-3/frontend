@@ -84,7 +84,7 @@ function Ajustes() {
 
   // @ts-ignore
   const handleChange = (values: IUser) => {
-    axios.put(`http://localhost:3000/users/${user.id}`, {
+    axios.put(`https://api.ismoxpage.online/users/${user.id}`, {
       user: values
     }).then((res) => {
       localStorage.setItem("user", JSON.stringify({ user:values }))
@@ -225,6 +225,9 @@ function Ajustes() {
             label="Nueva contraseña"
             placeholder="Nueva contraseña"
             mb={20}
+
+
+            
             
             {...form.getInputProps('password')}
           />
