@@ -16,13 +16,6 @@ import { useState } from 'react';
 function UserInfoAction() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
  // @ts-ignore
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
-
-
-    const handleLogout = () => {
-        // Eliminar el elemento 'user' del localStorage
-        localStorage.removeItem('user');
-    };
 
 
     return (
@@ -59,7 +52,7 @@ function UserInfoAction() {
                     </Text>
 
                     <Link to="/">
-                        <Button variant="filled" color="red" fullWidth mt="md" onClick={handleLogout}>
+                        <Button variant="filled" color="red" fullWidth mt="md">
                             Cerrar Sesion
                         </Button>
                     </Link>
