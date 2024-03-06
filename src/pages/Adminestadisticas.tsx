@@ -9,11 +9,27 @@ import { useWindowScroll } from '@mantine/hooks';
 
 
 function Adminestadisticas() {
-    
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return (
         <>
-            hola estadisticas asd
+        <Transition
+                mounted={isMounted}
+                transition="scale-y"
+                duration={500}
+                timingFunction="ease"
+            >
+                {(styles) => <div style={styles}>
+            <Paper>
+                <Text>hola estadisticas asd</Text>
+            </Paper>
+            </div>}
+            </Transition>
+            
         </>
     )
 }

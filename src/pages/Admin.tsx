@@ -5,16 +5,31 @@ import { Link } from 'react-router-dom';
 import classes from './Examen_Pages/BadgeCard.module.css';
 import { IconArrowDown } from '@tabler/icons-react';
 import { useWindowScroll } from '@mantine/hooks';
-import UserInfoAction from "../components/Userinfo.init/UserInfoAction";
+import UserInfoAction from "../components/Userinfo.init/UserInfoAction_admin";
 
 
 function Admin() {
-    
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return (
         <>
         <UserInfoAction/>
-            hola principalasd asd
+        <Transition
+                mounted={isMounted}
+                transition="fade"
+                duration={300}
+                timingFunction="ease"
+            >
+                {(styles) => <div style={styles}>
+            <Paper>
+                <Text>Hola</Text>
+            </Paper>
+            </div>}
+            </Transition>
         </>
     )
 }

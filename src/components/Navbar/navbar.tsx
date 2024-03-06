@@ -21,7 +21,7 @@ function Navbar() {
     <Box pb={0}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-        <img src={logo} alt="Logo" className={classes.logito}/>
+          <Link to="/"><img src={logo} alt="Logo" className={classes.logito}/></Link>
           <Group visibleFrom="sm">
             <Button variant="default">Log in</Button>
             <Button>Sign up</Button>

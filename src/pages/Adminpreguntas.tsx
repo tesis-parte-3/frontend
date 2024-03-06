@@ -1,8 +1,8 @@
 
 import { Container, Title, Accordion } from '@mantine/core';
 import classes from './../assets/css/AdminQ.module.css';
-import { Select, TextInput, Paper, Button } from '@mantine/core';
-import { useState } from 'react';
+import { Select, TextInput, Paper, Button, Transition } from '@mantine/core';
+import { useState, useEffect } from 'react';
 import {
     Table,
     ScrollArea,
@@ -111,9 +111,16 @@ const dataModificar = [
 
 
 function Adminpreguntas() {
+
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     const [search, setSearch] = useState('');
     const [sortedDataE, setSortedDataE] = useState(dataEliminar);
     const [sortedDataM, setSortedDataM] = useState(dataModificar);
+    
 
     const [sortBy, setSortBy] = useState<keyof RowData | null>(null);
     const [reverseSortDirection, setReverseSortDirection] = useState(false);
@@ -188,7 +195,14 @@ function Adminpreguntas() {
     const icon = <X/>;
     return (
         <>
-            <Container size="sm" className={classes.wrapper}>
+        <Transition
+                mounted={isMounted}
+                transition="scale-x"
+                duration={500}
+                timingFunction="ease"
+            >
+                {(styles) => <div style={styles}>
+                <Container size="sm" className={classes.wrapper}>
                 <Title ta="center" mb="xl" className={classes.title}>
                     Control de Administrador sobre preguntas
                 </Title>
@@ -353,6 +367,9 @@ function Adminpreguntas() {
                 </Accordion>
             </Container>
             <Paper mt="90" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
+            </div>}
+            </Transition>
+            
         </>
 
     );

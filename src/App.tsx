@@ -65,7 +65,7 @@ const App: React.FC = () => {
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
   const backmenubar2 = ['/Autodidactas','/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
-  const showBottnav_Admin = ['/Adminpreguntas', '/Adminestadisticas', '/Admin'].includes(location.pathname);
+  const showBottnav_Admin = ['/Adminpreguntas', '/Adminestadisticas', '/admin'].includes(location.pathname);
   const backmenubarAdmin = ['/Adminpreguntas', '/Adminestadisticas'].includes(location.pathname);
   return (
     <>

@@ -14,8 +14,8 @@ function backmenu() {
         <>
             <Box>
                 <header className={classes.header} style={{ display: 'flex', alignItems: 'center' }}>
-                    <Tooltip label="Admin" position="top">
-                        <div onClick={() => navigate("/Admin")} style={{ padding: '0px', margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                    <Tooltip label="admin" position="top">
+                        <div onClick={() => navigate("/admin")} style={{ padding: '0px', margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                             <div className={classes.icono} style={{
                             }}>
                                 <ArrowBarLeft

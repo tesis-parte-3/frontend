@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useForm } from '@mantine/form';
 import {
@@ -12,6 +12,7 @@ import {
   Checkbox,
   Anchor,
   Stack,
+  Transition,
 } from '@mantine/core';
 import Navbar from '../components/Navbar/navbar';
 
@@ -46,11 +47,19 @@ function Register() {
         return null;
       },
       email: (val) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) ? null : 'Email inválido'),
-      password: (val) => (val.length <= 8 ? 'Tiene que tener mas de 6 caracteres' : null),
-      password_confirmation: (val) => (val.length <= 8 ? 'Tiene que tener mas de 6 caracteres' : null),
+      password: (val) => (val.length < 8 ? 'Tiene que tener mas de 8 caracteres' : null),
+      password_confirmation: (val, password) => {
+        if (val.length < 8) {
+          return 'Tiene que tener mas de 8 caracteres';
+        }
+        if (val !== password.password) {
+          return 'Las contraseñas no coinciden';
+        }
+        return null;
+      },
       dni: (val) => {
         if (val.length < 7 || val.length > 10) {
-          return 'Cédula inválida, debe tener al menos 7 dígitos y no mas de 10 digitos';
+          return 'Cédula inválida, debe tener al menos 7 dígitos y no mas de 9 digitos';
         }
         const isNumeric = /^[0-9]+$/.test(val);
         if (!isNumeric) {
@@ -65,6 +74,7 @@ function Register() {
         return null
       }
     },
+    
   });
 
   const handleRegister = (values: IRegister) => {
@@ -79,20 +89,29 @@ function Register() {
         setError('No se pudo registrar el usuario')
       });
   }
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
       <Navbar />
-      <Paper mt="60" radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
-        <Text size="lg" fw={500}>
-          Bienvenido a QuizDrive, registate
+      <Transition
+                mounted={isMounted}
+                transition="scale-y"
+                duration={300}
+                timingFunction="ease"
+            >
+                {(styles) => <div style={styles}>
+                <Paper mt="60" radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
+        
+        <Text size="xl" fw={700} ta="center">
+          Bienvenido a QuizDrive, registrate
         </Text>
 
-        <Group grow mb="md" mt="md">
-        </Group>
-
-        <Divider label="O continua iniciando con correo" labelPosition="center" my="lg" />
+        <Divider label="Registro de Datos" labelPosition="center" my="lg" />
 
         <form onSubmit={form.onSubmit(() => { })}>
           <Stack>
@@ -157,6 +176,9 @@ function Register() {
           </Group>
         </form>
       </Paper>
+            </div>}
+            </Transition>
+      
     </>
   )
 }
