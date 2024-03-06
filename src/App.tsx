@@ -8,6 +8,7 @@ import Examen from './pages/Examen';
 import Estudios from './pages/Estudios';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Bottnav from './components/BotNav/Bottnav'; 
+import Bottnav_Admin from './components/BotNav_Admin/Bottnav'; 
 import Backmenu from './components/Userinfo.init/backmenu';
 import ErrorPage from './pages/ErrorPage';
 import React from 'react';
@@ -18,6 +19,9 @@ import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_exa
 import Backmenubar_estudios from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios';
 import Register from './pages/Register'
 import Admin from './pages/Admin'
+import Adminestadisticas from './pages/Adminestadisticas'
+import Adminpreguntas from './pages/Adminpreguntas'
+import BackmenuAdmin from './components/Backmenu_Admin/backmenu'
 
 //RUTAS PARA LOS PDFS
 import LibroDiccionarioVial from './pages/Aprendizaje_Pages/LibroDiccionarioVial';
@@ -61,14 +65,16 @@ const App: React.FC = () => {
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
   const backmenubar2 = ['/Autodidactas','/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
-
-
+  const showBottnav_Admin = ['/Adminpreguntas', '/Adminestadisticas', '/Admin'].includes(location.pathname);
+  const backmenubarAdmin = ['/Adminpreguntas', '/Adminestadisticas'].includes(location.pathname);
   return (
     <>
       {showBackmenu && <Backmenu />}
       {showBottnav && <Bottnav />}
       {backmenubar && <Backmenubar_examen />}
       {backmenubar2 && <Backmenubar_estudios />}
+      {showBottnav_Admin && <Bottnav_Admin />}
+      {backmenubarAdmin && <BackmenuAdmin/>}
       <Routes location={location} key={location.pathname}>
         <Route path='/*' element={<ErrorPage/>}/>
         <Route path="/" element={<Welcome />} />
@@ -79,7 +85,9 @@ const App: React.FC = () => {
         <Route path="/Ajustes" element={<Ajustes />} />
         <Route path="/principal" element={<Principal />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/Admin" element={<Admin />} />
+        <Route path="/Adminpreguntas" element={<Adminpreguntas />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/Adminestadisticas" element={<Adminestadisticas />} />
         <Route path="/Recuperar" element={<Recuperar />} />
         <Route path="/Autodidactas" element={<Autodidactas />} />
 

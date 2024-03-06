@@ -46,11 +46,11 @@ function Register() {
         return null;
       },
       email: (val) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) ? null : 'Email inválido'),
-      password: (val) => (val.length <= 6 ? 'Tiene que tener mas de 6 caracteres' : null),
-      password_confirmation: (val) => (val.length <= 6 ? 'Tiene que tener mas de 6 caracteres' : null),
+      password: (val) => (val.length <= 8 ? 'Tiene que tener mas de 6 caracteres' : null),
+      password_confirmation: (val) => (val.length <= 8 ? 'Tiene que tener mas de 6 caracteres' : null),
       dni: (val) => {
-        if (val.length < 7) {
-          return 'Cédula inválida, debe tener al menos 7 dígitos';
+        if (val.length < 7 || val.length > 10) {
+          return 'Cédula inválida, debe tener al menos 7 dígitos y no mas de 10 digitos';
         }
         const isNumeric = /^[0-9]+$/.test(val);
         if (!isNumeric) {

@@ -5,19 +5,18 @@ import { Link } from 'react-router-dom';
 import classes from './Examen_Pages/BadgeCard.module.css';
 import { IconArrowDown } from '@tabler/icons-react';
 import { useWindowScroll } from '@mantine/hooks';
-import UserInfoAction from "../components/Userinfo.init/UserInfoAction";
 
 
-function Admin() {
+
+function Adminestadisticas() {
     
 
     return (
         <>
-        <UserInfoAction/>
-            hola principalasd asd
+            hola estadisticas asd
         </>
     )
 }
 
-export default Admin;
+export default Adminestadisticas;
 
