@@ -160,6 +160,7 @@ function QuizzCard({ level }: IQuizzCard) {
       ul {
         display: flex;
         justify-content: space-evenly;
+        
       }
       
       ul :hover {
