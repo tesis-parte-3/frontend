@@ -112,7 +112,7 @@ function Estudios() {
                     <Card withBorder padding="lg" className={classes.card} m="lg" radius="md" shadow="md">
                         <Card.Section>
                             <Image
-                                src="https://lh3.googleusercontent.com/proxy/Eva9XRIDPinhsmTmfC02KeqbKyY7Fuk5NIj6Rjh0h4rZ4WUo4659fMwm6vGZn7tym07O3B4Ys1jgsgz_ghgKb6wP3wrcaR54Gn3kuutCkL-KLQVTdd9mA_LQktB0keQ"
+                                src="https://www.shutterstock.com/image-photo/truck-container-on-highway-cargo-600nw-1923463037.jpg"
                                 alt="Licencia G5"
                                 height={100}
                             />
