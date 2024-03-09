@@ -1,4 +1,3 @@
-
 import { Container, Title, Accordion } from '@mantine/core';
 import classes from './../assets/css/AdminQ.module.css';
 import { Select, TextInput, Paper, Button, Transition } from '@mantine/core';

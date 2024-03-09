@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { Table, Checkbox, Card, Image, Text, Group, Container, Button, Accordion, Paper, Affix, Transition, Anchor, Divider, Title, Stack, TextInput, PasswordInput } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { Table, Checkbox, Group, Container, Button, Accordion, Paper,  Transition, Divider, Title, Stack, TextInput, PasswordInput } from '@mantine/core';
 import classes from './Examen_Pages/BadgeCard.module.css';
-import { IconArrowDown } from '@tabler/icons-react';
-import { useWindowScroll } from '@mantine/hooks';
 import { Users } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
 import axios from 'axios';

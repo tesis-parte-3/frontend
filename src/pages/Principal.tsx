@@ -1,5 +1,5 @@
 import UserInfoAction from "../components/Userinfo.init/UserInfoAction";
-import { IconBookmark, IconHeart, IconShare } from '@tabler/icons-react';
+import { IconHeart} from '@tabler/icons-react';
 import {
     Card,
     Image,
