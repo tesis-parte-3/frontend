@@ -20,9 +20,9 @@ function Bottnav() {
                             mt={{ base: '1%' }}
                         >
                             <Tooltip label="Paneles" position="top">
-                                <div onClick={() => navigate("/Adminestadisticas")} style={{padding: '0px',margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div onClick={() => navigate("/Admincu")} style={{padding: '0px',margin: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                                 <div className={classes.icono} style={{
-                                        background: location.pathname === '/AdminEstadisticas' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
+                                        background: location.pathname === '/Admincu' ? 'radial-gradient(circle at 50%, #1D72FE33 0%, transparent 80%)' : 'none',
                                     }}>
                                         <DeviceDesktopAnalytics
                                             size={45}

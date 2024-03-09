@@ -19,7 +19,7 @@ import Backmenubar_examen from './pages/Examen_Pages/BackmenuBar/backmenubar_exa
 import Backmenubar_estudios from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios';
 import Register from './pages/Register'
 import Admin from './pages/Admin'
-import Adminestadisticas from './pages/Adminestadisticas'
+import Admincu from './pages/Admincu'
 import Adminpreguntas from './pages/Adminpreguntas'
 import BackmenuAdmin from './components/Backmenu_Admin/backmenu'
 
@@ -65,8 +65,8 @@ const App: React.FC = () => {
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
   const backmenubar2 = ['/Autodidactas','/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
-  const showBottnav_Admin = ['/Adminpreguntas', '/Adminestadisticas', '/admin'].includes(location.pathname);
-  const backmenubarAdmin = ['/Adminpreguntas', '/Adminestadisticas'].includes(location.pathname);
+  const showBottnav_Admin = ['/Adminpreguntas', '/Admincu', '/admin'].includes(location.pathname);
+  const backmenubarAdmin = ['/Adminpreguntas', '/Admincu'].includes(location.pathname);
   return (
     <>
       {showBackmenu && <Backmenu />}
@@ -87,7 +87,7 @@ const App: React.FC = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="/Adminpreguntas" element={<Adminpreguntas />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/Adminestadisticas" element={<Adminestadisticas />} />
+        <Route path="/Admincu" element={<Admincu />} />
         <Route path="/Recuperar" element={<Recuperar />} />
         <Route path="/Autodidactas" element={<Autodidactas />} />
 
