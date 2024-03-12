@@ -1,6 +1,7 @@
 import { Button } from '@mantine/core';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { Target } from 'tabler-icons-react';
 
 
 interface IQuizzCard {
@@ -16,12 +17,54 @@ interface IQuestions {
 
 function QuizzCard({ level }: IQuizzCard) {
   const [questions, setQuestions] = useState<IQuestions[]>([]) //pregunta actual
-  const [isFinished, setIsFinished] = useState(false); //para saber si hemos terminado
+  const [isFinished, setIsFinished] = useState<boolean>(false) //para saber si hemos terminado
 
   const [loading, setLoading] = useState<boolean>(true)
   const [failureCounter, setFailureCounter] = useState<number>(0)
   const [currentQuestion, setCurrentQuestion] = useState<number>(0) //que numero de pregunta se esta mostrando
   const [score, setScore] = useState<number>(0)
+  const [tiempoRestante, setTiempoRestante] = useState<number>(20)
+  const [areDisabled, setAreDisabled] = useState<boolean>(false)
+  const [answersShown, setAnswersShown] = useState<boolean>(false)
+
+  function handleAnswerSubmit(answer: string, e: any) {
+
+    //añadir puntuacion
+    if (answer === questions[currentQuestion].correct_answer) {
+      setScore(score + 1)
+
+    }
+
+    //añadir estilos de pregunta
+
+    e.target.classList.add(answer === questions[currentQuestion].correct_answer ? 'correct' : 'incorrect')
+    setAreDisabled(true)
+    // if (answer === questions[currentQuestion].correct_answer) {
+    //   e.target.classList.add('correct')
+    // } else {
+    //   e.target.classList.add('incorrect')
+    // }
+
+    //pasar a la siguiente pregunta
+
+
+
+    setTimeout(() => {
+      if (currentQuestion == questions.length - 1) {
+        setIsFinished(true)
+      } else {
+        setCurrentQuestion(currentQuestion + 1)
+        e.target.classList.remove('correct')
+        e.target.classList.remove('incorrect')
+        setTiempoRestante(20)
+        setAreDisabled(false)
+      }
+    }, 1000);
+
+    console.log(score)
+
+
+  }
 
   useEffect(() => {
     axios.get(`https://api.ismoxpage.online/exams?level=${level}`).then((res) => {
@@ -32,6 +75,178 @@ function QuizzCard({ level }: IQuizzCard) {
       setFailureCounter(failureCounter + 1)
     })
   }, [failureCounter])
+
+  useEffect(() => {
+
+    const intervalo = setInterval(() => {
+
+      if (tiempoRestante > 0) setTiempoRestante((prev) => prev - 1)
+      if (tiempoRestante === 0) {
+        setAreDisabled(true);
+      }
+
+    }, 1000)
+
+    return () => clearInterval(intervalo)
+
+  }, [tiempoRestante]);
+
+
+  if (isFinished) return (
+    <>
+
+      <style>
+        {`
+   .container {
+
+        
+    margin-top: 30vh; 
+    background-color: #252d4a;
+    max-width: 650px;
+    min-width: 450px;
+    height: min-content;
+    min-height: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: space-evenly;
+  }
+  @media(max-width:600px){
+    .container{
+      max-width: 90vw;
+      min-width: 90vw;
+      margin: 5vw auto;
+      margin-top: 30vh;
+    }
+  }
+
+  /* FINALIZADO */
+  .juego-terminado {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 24px;
+    align-items: center;
+  }
+
+
+
+
+`}
+
+      </style>
+
+
+      <div className="container">
+
+        <div className="juego-terminado">
+
+          <span>
+            {" "}
+            Has terminado el examen. Tu puntuación es: {score / 2} de {questions.length / 2}
+            {" "}
+          </span>
+
+          <span>
+            {" "}
+            {score >= 20 ? "¡Felicidades! Has aprobado el examen" : "Lo siento, no has aprobado el examen"}
+            {" "}
+          </span>
+
+          <button onClick={() => window.location.href = "/Examen"}> hacer otro examen </button>
+
+          <button onClick={() => {
+            setIsFinished(false)
+            setAnswersShown(true)
+            setCurrentQuestion(0)
+          }}> ver respuestas </button>
+        </div>
+
+      </div>
+    </>
+  )
+
+  if (answersShown) return (
+
+    <>
+
+      <style>
+        {`
+   .container {
+
+        
+    margin-top: 30vh; 
+    background-color: #252d4a;
+    max-width: 650px;
+    min-width: 450px;
+    height: min-content;
+    min-height: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: space-evenly;
+  }
+  @media(max-width:600px){
+    .container{
+      max-width: 90vw;
+      min-width: 90vw;
+      margin: 5vw auto;
+      margin-top: 30vh;
+    }
+  }
+
+
+`}
+
+      </style>
+
+      <div className="container">
+
+        <div className="lado-izquierdo">
+
+          <div className="numero-pregunta">
+            <span>pregunta {currentQuestion + 1}  de </span> {questions.length}
+          </div>
+
+          <div className="titulo-pregunta">
+            <p>{questions[currentQuestion].question}</p>
+
+          </div>
+
+          <div>
+            {questions[currentQuestion].answers.filter((answer) => answer === questions[currentQuestion].correct_answer)}
+          </div>
+
+          <button onClick={() => {
+
+            
+              if (currentQuestion == questions.length - 1) {
+                window.location.href = "/Examen"
+              } else {
+                setCurrentQuestion(currentQuestion + 1)
+
+              }
+            
+
+          }}>
+            {currentQuestion == questions.length - 1 ? "Terminar" : "Siguiente"}
+          
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+
+    </>
+
+
+  )
+
 
 
   return (
@@ -180,15 +395,11 @@ function QuizzCard({ level }: IQuizzCard) {
         `}
       </style>
 
-
       {loading ? (
         <div>
           <p>Cargando...</p>
         </div>
       ) : (
-
-
-
 
         <div className='container'>
 
@@ -203,6 +414,21 @@ function QuizzCard({ level }: IQuizzCard) {
 
             </div>
 
+            <div>{!areDisabled ? (
+              <span className="tiempo-restante">tiempo restante: {tiempoRestante}</span>
+            ) : (
+              <button
+                onClick={() => {
+                  setTiempoRestante(20)
+                  setAreDisabled(false)
+                  setCurrentQuestion(currentQuestion + 1)
+                }}
+              > Continuar</button>
+            )}
+
+            </div>
+
+
           </div>
 
           <div className="lado-derecho">
@@ -211,14 +437,11 @@ function QuizzCard({ level }: IQuizzCard) {
 
               {questions[currentQuestion].answers.map((answer, index) => (
 
-                <Button key={index} onClick={() => {
-                  if (answer === questions[currentQuestion].correct_answer) {
-                    setScore(score + 1)
-                  }
-                  setCurrentQuestion(currentQuestion + 1)
-                  console.log(score)
-                }}>{answer}</Button>
+                <Button disabled={areDisabled} key={index} onClick={(e) => handleAnswerSubmit(answer, e)} >{answer}</Button>
               ))}
+
+
+
             </ul>
 
           </div>
