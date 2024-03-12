@@ -231,6 +231,7 @@ function Admincu() {
                             </Accordion.Item>
                         </Accordion>
                     </Container>
+                    <Paper mt="90" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
                 </div>}
             </Transition>
 
