@@ -1,31 +1,52 @@
 import { Button } from '@mantine/core';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import { Target } from 'tabler-icons-react';
-
+import { Target, User } from 'tabler-icons-react';
+import { useForm } from '@mantine/form'
 
 interface IQuizzCard {
   level: 'grado2' | 'grado3' | 'grado5' | 'general';
 }
+
+
+
 
 interface IQuestions {
   level: string;
   question: string;
   answers: string[];
   correct_answer: string;
+  exam_a: number;
+  exam_r: number;
 }
+
+  // const handleChange = (values: IUser) => {
+  //   axios.post(`http://localhost:3000/users/${user.id}`, {
+  //     user: values
+  //   }).then((res) => {
+  //     localStorage.setItem("user", JSON.stringify({ user:values }))
+  //     window.location.reload()
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // }
+
+
+
+
 
 function QuizzCard({ level }: IQuizzCard) {
   const [questions, setQuestions] = useState<IQuestions[]>([]) //pregunta actual
   const [isFinished, setIsFinished] = useState<boolean>(false) //para saber si hemos terminado
 
-  const [loading, setLoading] = useState<boolean>(true)
-  const [failureCounter, setFailureCounter] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(true) //para saber si estamos cargando
+  const [failureCounter, setFailureCounter] = useState<number>(0) //para saber cuantas veces hemos fallado
   const [currentQuestion, setCurrentQuestion] = useState<number>(0) //que numero de pregunta se esta mostrando
-  const [score, setScore] = useState<number>(0)
-  const [tiempoRestante, setTiempoRestante] = useState<number>(20)
-  const [areDisabled, setAreDisabled] = useState<boolean>(false)
-  const [answersShown, setAnswersShown] = useState<boolean>(false)
+  const [score, setScore] = useState<number>(0) //puntuacion
+  const [tiempoRestante, setTiempoRestante] = useState<number>(20) //tiempo restante
+  const [areDisabled, setAreDisabled] = useState<boolean>(false) //para saber si los botones estan deshabilitados
+  const [answersShown, setAnswersShown] = useState<boolean>(false) //para saber si las respuestas se han mostrado
 
   function handleAnswerSubmit(answer: string, e: any) {
 
@@ -66,8 +87,9 @@ function QuizzCard({ level }: IQuizzCard) {
 
   }
 
+
   useEffect(() => {
-    axios.get(`https://api.ismoxpage.online/exams?level=${level}`).then((res) => {
+    axios.get(`http://localhost:3000/exams?level=${level}`).then((res) => {
       setQuestions(res.data)
       setLoading(false)
       console.log(res.data)
@@ -137,6 +159,8 @@ function QuizzCard({ level }: IQuizzCard) {
 
       </style>
 
+    
+
 
       <div className="container">
 
@@ -154,12 +178,16 @@ function QuizzCard({ level }: IQuizzCard) {
             {" "}
           </span>
 
+
+          exam_a: exam_a + 1 
+
           <button onClick={() => window.location.href = "/Examen"}> hacer otro examen </button>
 
           <button onClick={() => {
             setIsFinished(false)
             setAnswersShown(true)
             setCurrentQuestion(0)
+            
           }}> ver respuestas </button>
         </div>
 
@@ -167,7 +195,7 @@ function QuizzCard({ level }: IQuizzCard) {
     </>
   )
 
-  if (answersShown) return (
+  if (answersShown) return ( 
 
     <>
 
@@ -221,19 +249,29 @@ function QuizzCard({ level }: IQuizzCard) {
 
           <button onClick={() => {
 
-            
-              if (currentQuestion == questions.length - 1) {
-                window.location.href = "/Examen"
-              } else {
-                setCurrentQuestion(currentQuestion + 1)
 
-              }
-            
+            if (currentQuestion == questions.length - 1) {
+              window.location.href = "/Examen"
+            } else {
+              setCurrentQuestion(currentQuestion + 1)
+            }
+
 
           }}>
             {currentQuestion == questions.length - 1 ? "Terminar" : "Siguiente"}
-          
           </button>
+
+          <button onClick={() => {
+
+            if (currentQuestion == 0) {
+
+            } else {
+              setCurrentQuestion(currentQuestion - 1)
+
+            }
+
+
+          }}>volver</button>
 
         </div>
 

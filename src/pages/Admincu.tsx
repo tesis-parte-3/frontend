@@ -88,7 +88,7 @@ function Admincu() {
     });
 
     const handleRegister = (values: IRegister) => {
-        axios.post('https://api.ismoxpage.online/users', values)
+        axios.post('http://localhost:3000/users', values)
             .then(function (response) {
                 console.log(response);
                 localStorage.setItem("user", JSON.stringify(response.data))

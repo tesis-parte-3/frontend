@@ -44,7 +44,7 @@ function Ajustes() {
     initialValues: {
       name: `${user.name}`,
       email: `${user.email}`,
-      password: '',
+      password:'',
       id: user.id,
       
       // currentPassword: '',
@@ -84,7 +84,7 @@ function Ajustes() {
 
   // @ts-ignore
   const handleChange = (values: IUser) => {
-    axios.put(`https://api.ismoxpage.online/users/${user.id}`, {
+    axios.put(`http://localhost:3000/users/${user.id}`, {
       user: values
     }).then((res) => {
       localStorage.setItem("user", JSON.stringify({ user:values }))

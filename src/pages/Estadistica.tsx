@@ -3,16 +3,23 @@ import { IconArrowUpRight, IconDeviceAnalytics } from '@tabler/icons-react';
 import classes from '../components/Graficos/StatsCard.module.css';
 import { Transition } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import { User } from 'tabler-icons-react';
 
 
 /* Informacion de base de datos donde se saca la infomacion para hacer el grafico de victorias y derrotas */
 
-const data = [
-    { label: 'Completados', count: '10', part: 30, color: '#6BD731' },
-    { label: 'Fallidos', count: '20', part: 70, color: '#9F4445' },
-];
+
+
+
 
 function Estadistica() {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
+
+    const data = [
+        { label: 'Aprobados' , count: '20', part: 30, color: '#6BD731' },
+        { label: 'Reprobados', count: '20', part: 70, color: '#9F4445' },
+    ];
+
     const segments = data.map((segment) => (
         <Progress.Section value={segment.part} color={segment.color} key={segment.color}>
             {segment.part > 10 && <Progress.Label>{segment.part}%</Progress.Label>}
@@ -59,7 +66,7 @@ function Estadistica() {
     }, []);
     const percentageI = (counterI / totalPagesI) * 100;
 
-
+    
 
 
 
@@ -379,7 +386,7 @@ function Estadistica() {
                             <IconDeviceAnalytics size="1.4rem" className={classes.icon} stroke={1.5} />
                         </Group>
                         <Text c="dimmed" fz="sm">
-                            Examenes Completados / Fallidos
+                            Examenes Aprobados / Reprobados
                         </Text>
                         <Progress.Root size={34} classNames={{ label: classes.progressLabel }} mt={40}>
                             {segments}
