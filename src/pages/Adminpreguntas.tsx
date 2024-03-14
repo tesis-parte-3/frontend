@@ -13,6 +13,7 @@ import {
     keys,
     ActionIcon 
 } from '@mantine/core';
+import { FileInput } from '@mantine/core';
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from '@tabler/icons-react';
 import THClass from './../assets/css/TableSort.module.css';
 import { X } from 'tabler-icons-react';
@@ -226,6 +227,63 @@ function Adminpreguntas() {
                                     required
                                     mb="sx"
                                 />
+                                <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
+                                {answers.map((answer, index) => (
+                                    <TextInput
+                                        key={index}
+                                        label={`Respuesta ${index + 1}`}
+                                        placeholder="Texto"
+                                        value={answer}
+                                        onChange={(event) => updateAnswer(index, event.currentTarget.value)}
+                                        rightSection={
+
+                                            <ActionIcon
+                                                variant="default"
+                                                size="100%"
+                                                onClick={() => deleteAnswer(index)}
+                                            >
+                                                <X  />
+                                            </ActionIcon>
+                                        }
+                                        required
+                                        mb="sx"
+                                    />
+                                ))}
+                                <Button mt="xl" variant="outline" color="blue" onClick={addAnswer}>
+                                    Agregar otra respuesta
+                                </Button>
+                                <TextInput
+                                    mt="md"
+                                    placeholder="Respuesta"
+                                    label="Indica la respuesta correcta"
+                                    required
+                                />
+
+                                <Button mt="xl" color="blue">
+                                    Agregar
+                                </Button>
+
+                            </Paper>
+
+
+                        </Accordion.Panel>
+                    </Accordion.Item>
+                    <Accordion.Item value="Aregar-pregunta-con-imagen">
+                        <Accordion.Control>Agregar pregunta con imagen</Accordion.Control>
+                        <Accordion.Panel>
+                            <Paper>
+                                <TextInput label="Pregunta" placeholder="Texto" required />
+                                <FileInput mt="2%" accept="image/png,image/jpeg" label="Imange de la pregunta" placeholder="Toca aqui para seleccionar archivo" required/>
+                                <Select
+                                    mt="2%"
+                                    comboboxProps={{ withinPortal: true }}
+                                    data={['General', 'G2', 'G3', 'G5']}
+                                    placeholder="Selecciona grado"
+                                    label="Indica el grado de la pregunta"
+                                    required
+                                    mb="sx"
+                                />
+                                
                                 <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
                                 {answers.map((answer, index) => (
                                     <TextInput
