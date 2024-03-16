@@ -23,7 +23,7 @@ import Admincu from './pages/Admincu'
 import Adminpreguntas from './pages/Adminpreguntas'
 import BackmenuAdmin from './components/Backmenu_Admin/backmenu'
 
-//RUTAS PARA LOS PDFS
+//RUTAS PARA LOS PDFS AUTODIDACTAS
 import LibroDiccionarioVial from './pages/Aprendizaje_Pages/LibroDiccionarioVial';
 import SeguridadVial from './pages/Aprendizaje_Pages/SeguridadVial';
 import Integridad_De_Educacion from './pages/Aprendizaje_Pages/Integridad_De_Educacion'
@@ -56,6 +56,28 @@ import Recuperar from './pages/RecuperarC'
 import Autodidactas from './pages/Estudios_Pages/Estudios_Autodidactas/Autodidactas'
 
 
+//Backmenu General Estudios
+import BM_EstudiosLicencias from './pages/Estudios_Pages/backmenuEstudioG3'
+import BM_EstudiosLicencias_Exit from './pages/Estudios_Pages/backmenuEstudioG3_exitPDF'
+//ESTUDIOS G3
+import G3_Estudios from './pages/Estudios_Pages/Estudios_G3/G3_Estudios';
+//PDF G3
+import Funcionamiento_Vehiculo from './pages/Estudios_Pages/Estudios_G3/Funcionamiento_Vehiculo';
+import Conduccion_Responsable from './pages/Estudios_Pages/Estudios_G3/Conduccion_Responsable';
+import Normativa_Basica from './pages/Estudios_Pages/Estudios_G3/Normativa_basica';
+import Linea_Demarcacion from './pages/Estudios_Pages/Estudios_G3/Linea_Demarcacion';
+import Luces_Vehiculos from './pages/Estudios_Pages/Estudios_G3/Luces_Vehiculo';
+import Reductor_v from './pages/Estudios_Pages/Estudios_G3/Reductor_v';
+import Senal_VG from './pages/Estudios_Pages/Estudios_G3/Senal_VG';
+import Senal_Regla from './pages/Estudios_Pages/Estudios_G3/Senal_Regla';
+import Senal_PRE from './pages/Estudios_Pages/Estudios_G3/Senal_PRE';
+import Senal_INFO from './pages/Estudios_Pages/Estudios_G3/Senal_INFO';
+import Senal_MVA from './pages/Estudios_Pages/Estudios_G3/Senal_MVA';
+import Semaforo_G3 from './pages/Estudios_Pages/Estudios_G3/Semaforo_G3';
+import Senal_TCT from './pages/Estudios_Pages/Estudios_G3/Senal_TCT';
+import BAExit from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios_Exit';
+
+
 
 const App: React.FC = () => {
   // Add import statement for React
@@ -64,9 +86,12 @@ const App: React.FC = () => {
   const showBottnav = ['/Examen', '/Estadistica', '/Ajustes', '/principal', '/Estudios'].includes(location.pathname);
   const showBackmenu = ['/Examen', '/Estadistica', '/Ajustes', '/Estudios'].includes(location.pathname);
   const backmenubar = ['/Examen/LicenciaG3', '/Examen/LicenciaG2', '/Examen/LicenciaG5'].includes(location.pathname);
-  const backmenubar2 = ['/Autodidactas','/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
+  const backmenubar2 = ['/Dispositivos_Ferri','/Canales_Publicos','/Ciclorruta','/Reductor_Velocidad','/Dispositivos_Temporales','/SemaforosCT','/Demarcacion','/VariablesSenals','/InformationSenals','/PrevencionSenals','/ReglamentacionSenals','/VertialesSenals','/Generalidades','/Autobus_Turismo','/Empresas_TransporteUrbano','/Vehiculos_Carga','/EscolarTransporte','/Control_Semaforos','/TrianguloSeguridad','/Respuesta_Emergencia','/Vehiculos_dispositivosEI','/LibroDiccionarioVial', '/SeguridadVial', '/Integridad_De_Educacion', '/Cinturones_seguridad_VDM', '/Extintores_Generalidades','/Clasificacion_SD_identificacion', '/Automotriz_sistema_frenos'].includes(location.pathname);
   const showBottnav_Admin = ['/Adminpreguntas', '/Admincu', '/admin'].includes(location.pathname);
   const backmenubarAdmin = ['/Adminpreguntas', '/Admincu'].includes(location.pathname);
+  const BMEstudios = ['/G3_Estudios', '/G5_Estudios', '/G2_Estudios'].includes(location.pathname);
+  const BMExitG3 = ['/Senal_TCT','/Semaforo_G3','/Senal_MVA','/Senal_INFO','/Senal_PRE','/Senal_Regla','/Senal_VG','/Reductor_V', '/Luces_Vehiculos', '/Funcionamiento_Vehiculo', '/Conduccion_Responsable', '/Normativa_Basica', '/Linea_Demarcacion'].includes(location.pathname);
+  const BAE = ['/Autodidactas'].includes(location.pathname);
   return (
     <>
       {showBackmenu && <Backmenu />}
@@ -75,6 +100,10 @@ const App: React.FC = () => {
       {backmenubar2 && <Backmenubar_estudios />}
       {showBottnav_Admin && <Bottnav_Admin />}
       {backmenubarAdmin && <BackmenuAdmin/>}
+      {BMEstudios && <BM_EstudiosLicencias/>}
+      {BMExitG3 && <BM_EstudiosLicencias_Exit/>}
+      {BAE && <BAExit/>}
+
       <Routes location={location} key={location.pathname}>
         <Route path='/*' element={<ErrorPage/>}/>
         <Route path="/" element={<Welcome />} />
@@ -90,6 +119,23 @@ const App: React.FC = () => {
         <Route path="/Admincu" element={<Admincu />} />
         <Route path="/Recuperar" element={<Recuperar />} />
         <Route path="/Autodidactas" element={<Autodidactas />} />
+
+        {/* Estudios G3 */}
+        <Route path="/G3_Estudios" element={<G3_Estudios />} />
+        <Route path="/Funcionamiento_Vehiculo" element={<Funcionamiento_Vehiculo />} />
+        <Route path="/Conduccion_Responsable" element={<Conduccion_Responsable />} />
+        <Route path="/Normativa_Basica" element={<Normativa_Basica />} />
+        <Route path="/Linea_Demarcacion" element={<Linea_Demarcacion />} />
+        <Route path="/Luces_Vehiculos" element={<Luces_Vehiculos />} />
+        <Route path="/Reductor_v" element={<Reductor_v />} />
+        <Route path="/Senal_VG" element={<Senal_VG />} />
+        <Route path="/Senal_Regla" element={<Senal_Regla />} />
+        <Route path="/Senal_PRE" element={<Senal_PRE />} />
+        <Route path="/Senal_INFO" element={<Senal_INFO />} />
+        <Route path="/Senal_MVA" element={<Senal_MVA />} />
+        <Route path="/Semaforo_G3" element={<Semaforo_G3 />} />
+        <Route path="/Senal_TCT" element={<Senal_TCT />} />
+
 
 
         {/* Pages para los libros de aprendizaje */}
