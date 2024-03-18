@@ -84,7 +84,7 @@ function Ajustes() {
 
   // @ts-ignore
   const handleChange = (values: IUser) => {
-    axios.put(`http://localhost:3000/users/${user.id}`, {
+    axios.put(`https://ismoxpage.online/users/${user.id}`, {
       user: values
     }).then((res) => {
       localStorage.setItem("user", JSON.stringify({ user:values }))
