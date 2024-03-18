@@ -76,6 +76,7 @@ import Senal_MVA from './pages/Estudios_Pages/Estudios_G3/Senal_MVA';
 import Semaforo_G3 from './pages/Estudios_Pages/Estudios_G3/Semaforo_G3';
 import Senal_TCT from './pages/Estudios_Pages/Estudios_G3/Senal_TCT';
 import BAExit from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios_Exit';
+import G2_Estudios from './pages/Estudios_Pages/Estudios_G2/G2_Estudios';
 
 
 
@@ -136,6 +137,9 @@ const App: React.FC = () => {
         <Route path="/Semaforo_G3" element={<Semaforo_G3 />} />
         <Route path="/Senal_TCT" element={<Senal_TCT />} />
 
+
+        {/* Estudios G2 */}
+        <Route path="/G2_Estudios" element={<G2_Estudios />} />
 
 
         {/* Pages para los libros de aprendizaje */}

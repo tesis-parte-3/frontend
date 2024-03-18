@@ -11,12 +11,14 @@ import {
     Center,
     rem,
     keys,
-    ActionIcon 
+    ActionIcon
 } from '@mantine/core';
 import { FileInput } from '@mantine/core';
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from '@tabler/icons-react';
 import THClass from './../assets/css/TableSort.module.css';
 import { X } from 'tabler-icons-react';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '@mantine/core';
 
 
 
@@ -120,7 +122,7 @@ function Adminpreguntas() {
     const [search, setSearch] = useState('');
     const [sortedDataE, setSortedDataE] = useState(dataEliminar);
     const [sortedDataM, setSortedDataM] = useState(dataModificar);
-    
+
 
     const [sortBy, setSortBy] = useState<keyof RowData | null>(null);
     const [reverseSortDirection, setReverseSortDirection] = useState(false);
@@ -154,6 +156,7 @@ function Adminpreguntas() {
 
 
     const rowsEliminar = sortedDataE.map((row) => (
+        
         <Table.Tr key={row.pregunta}>
             <Table.Td>{row.pregunta}</Table.Td>
             <Table.Td>{row.grado}</Table.Td>
@@ -192,241 +195,241 @@ function Adminpreguntas() {
             setAnswers(newAnswers);
         }
     };
-    const icon = <X/>;
+    const icon = <X />;
     return (
         <>
-        <Transition
+            <Transition
                 mounted={isMounted}
                 transition="scale-x"
                 duration={500}
                 timingFunction="ease"
             >
                 {(styles) => <div style={styles}>
-                <Container size="sm" className={classes.wrapper}>
-                <Title ta="center" mb="xl" className={classes.title}>
-                    Control de Administrador sobre preguntas
-                </Title>
-                <Paper shadow="sm" radius="md" withBorder p="lg" mb="lg">
-                    <Center>
-                        <Text ta="center" fw={500} size="xl" >Pantalla exclusivamente para agregar, eliminar o agregar una pregunta</Text>
-                    </Center>
-                </Paper>
+                    <Container size="sm" className={classes.wrapper}>
+                        <Title ta="center" mb="xl" className={classes.title}>
+                            Control de Administrador sobre preguntas
+                        </Title>
+                        <Paper shadow="sm" radius="md" withBorder p="lg" mb="lg">
+                            <Center>
+                                <Text ta="center" fw={500} size="xl" >Pantalla exclusivamente para agregar, eliminar o agregar una pregunta</Text>
+                            </Center>
+                        </Paper>
 
-                <Accordion variant="separated">
-                    <Accordion.Item value="Aregar-pregunta">
-                        <Accordion.Control>Agregar pregunta</Accordion.Control>
-                        <Accordion.Panel>
-                            <Paper>
-                                <TextInput label="Pregunta" placeholder="Texto" required />
-                                <Select
-                                    mt="md"
-                                    comboboxProps={{ withinPortal: true }}
-                                    data={['General', 'G2', 'G3', 'G5']}
-                                    placeholder="Selecciona grado"
-                                    label="Indica el grado de la pregunta"
-                                    required
-                                    mb="sx"
-                                />
-                                <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
-                                {answers.map((answer, index) => (
-                                    <TextInput
-                                        key={index}
-                                        label={`Respuesta ${index + 1}`}
-                                        placeholder="Texto"
-                                        value={answer}
-                                        onChange={(event) => updateAnswer(index, event.currentTarget.value)}
-                                        rightSection={
+                        <Accordion variant="separated">
+                            <Accordion.Item value="Aregar-pregunta">
+                                <Accordion.Control>Agregar pregunta</Accordion.Control>
+                                <Accordion.Panel>
+                                    <Paper>
+                                        <TextInput label="Pregunta" placeholder="Texto" required />
+                                        <Select
+                                            mt="md"
+                                            comboboxProps={{ withinPortal: true }}
+                                            data={['General', 'G2', 'G3', 'G5']}
+                                            placeholder="Selecciona grado"
+                                            label="Indica el grado de la pregunta"
+                                            required
+                                            mb="sx"
+                                        />
+                                        <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
+                                        {answers.map((answer, index) => (
+                                            <TextInput
+                                                key={index}
+                                                label={`Respuesta ${index + 1}`}
+                                                placeholder="Texto"
+                                                value={answer}
+                                                onChange={(event) => updateAnswer(index, event.currentTarget.value)}
+                                                rightSection={
 
-                                            <ActionIcon
-                                                variant="default"
-                                                size="100%"
-                                                onClick={() => deleteAnswer(index)}
-                                            >
-                                                <X  />
-                                            </ActionIcon>
-                                        }
-                                        required
-                                        mb="sx"
-                                    />
-                                ))}
-                                <Button mt="xl" variant="outline" color="blue" onClick={addAnswer}>
-                                    Agregar otra respuesta
-                                </Button>
-                                <TextInput
-                                    mt="md"
-                                    placeholder="Respuesta"
-                                    label="Indica la respuesta correcta"
-                                    required
-                                />
+                                                    <ActionIcon
+                                                        variant="default"
+                                                        size="100%"
+                                                        onClick={() => deleteAnswer(index)}
+                                                    >
+                                                        <X />
+                                                    </ActionIcon>
+                                                }
+                                                required
+                                                mb="sx"
+                                            />
+                                        ))}
+                                        <Button mt="xl" variant="outline" color="blue" onClick={addAnswer}>
+                                            Agregar otra respuesta
+                                        </Button>
+                                        <TextInput
+                                            mt="md"
+                                            placeholder="Respuesta"
+                                            label="Indica la respuesta correcta"
+                                            required
+                                        />
 
-                                <Button mt="xl" color="blue">
-                                    Agregar
-                                </Button>
+                                        <Button mt="xl" color="blue">
+                                            Agregar
+                                        </Button>
 
-                            </Paper>
-
-
-                        </Accordion.Panel>
-                    </Accordion.Item>
-                    <Accordion.Item value="Aregar-pregunta-con-imagen">
-                        <Accordion.Control>Agregar pregunta con imagen</Accordion.Control>
-                        <Accordion.Panel>
-                            <Paper>
-                                <TextInput label="Pregunta" placeholder="Texto" required />
-                                <FileInput mt="2%" accept="image/png,image/jpeg" label="Imange de la pregunta" placeholder="Toca aqui para seleccionar archivo" required/>
-                                <Select
-                                    mt="2%"
-                                    comboboxProps={{ withinPortal: true }}
-                                    data={['General', 'G2', 'G3', 'G5']}
-                                    placeholder="Selecciona grado"
-                                    label="Indica el grado de la pregunta"
-                                    required
-                                    mb="sx"
-                                />
-                                
-                                <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
-                                {answers.map((answer, index) => (
-                                    <TextInput
-                                        key={index}
-                                        label={`Respuesta ${index + 1}`}
-                                        placeholder="Texto"
-                                        value={answer}
-                                        onChange={(event) => updateAnswer(index, event.currentTarget.value)}
-                                        rightSection={
-
-                                            <ActionIcon
-                                                variant="default"
-                                                size="100%"
-                                                onClick={() => deleteAnswer(index)}
-                                            >
-                                                <X  />
-                                            </ActionIcon>
-                                        }
-                                        required
-                                        mb="sx"
-                                    />
-                                ))}
-                                <Button mt="xl" variant="outline" color="blue" onClick={addAnswer}>
-                                    Agregar otra respuesta
-                                </Button>
-                                <TextInput
-                                    mt="md"
-                                    placeholder="Respuesta"
-                                    label="Indica la respuesta correcta"
-                                    required
-                                />
-
-                                <Button mt="xl" color="blue">
-                                    Agregar
-                                </Button>
-
-                            </Paper>
+                                    </Paper>
 
 
-                        </Accordion.Panel>
-                    </Accordion.Item>
+                                </Accordion.Panel>
+                            </Accordion.Item>
+                            <Accordion.Item value="Aregar-pregunta-con-imagen">
+                                <Accordion.Control>Agregar pregunta con imagen</Accordion.Control>
+                                <Accordion.Panel>
+                                    <Paper>
+                                        <TextInput label="Pregunta" placeholder="Texto" required />
+                                        <FileInput mt="2%" accept="image/png,image/jpeg" label="Imange de la pregunta" placeholder="Toca aqui para seleccionar archivo" required />
+                                        <Select
+                                            mt="2%"
+                                            comboboxProps={{ withinPortal: true }}
+                                            data={['General', 'G2', 'G3', 'G5']}
+                                            placeholder="Selecciona grado"
+                                            label="Indica el grado de la pregunta"
+                                            required
+                                            mb="sx"
+                                        />
 
-                    <Accordion.Item className={classes.item} value="Eliminar-Pregunta">
-                        <Accordion.Control>Eliminar pregunta</Accordion.Control>
-                        <Accordion.Panel>
-                            <ScrollArea>
-                                <TextInput
-                                    placeholder="Search by any field"
-                                    mb="md"
-                                    leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
-                                    value={search}
-                                    onChange={handleSearchChange}
-                                />
-                                <Table verticalSpacing="xs">
-                                    <Table.Tbody>
-                                        <Table.Tr>
-                                            <Th
-                                                sorted={sortBy === 'pregunta'}
-                                                reversed={reverseSortDirection}
-                                                onSort={() => setSorting('pregunta')}
-                                            >
-                                                Pregunta
-                                            </Th>
-                                            <Th
-                                                sorted={sortBy === 'grado'}
-                                                reversed={reverseSortDirection}
-                                                onSort={() => setSorting('grado')}
-                                            >
-                                                Grado
-                                            </Th>
-                                        </Table.Tr>
-                                    </Table.Tbody>
-                                    <Table.Tbody>
-                                        {rowsEliminar.length > 0 ? (
-                                            rowsEliminar
-                                        ) : (
-                                            <Table.Tr>
-                                                <Table.Td colSpan={Object.keys(dataEliminar[0]).length}>
-                                                    <Text fw={500} ta="center">
-                                                        Sin resultados
-                                                    </Text>
-                                                </Table.Td>
-                                            </Table.Tr>
-                                        )}
-                                    </Table.Tbody>
-                                </Table>
-                            </ScrollArea>
-                        </Accordion.Panel>
-                    </Accordion.Item>
+                                        <Text mt="lg" c="dimmed" fz="12">Minimo todas las preguntas deben tener 2 respuestas</Text>
+                                        {answers.map((answer, index) => (
+                                            <TextInput
+                                                key={index}
+                                                label={`Respuesta ${index + 1}`}
+                                                placeholder="Texto"
+                                                value={answer}
+                                                onChange={(event) => updateAnswer(index, event.currentTarget.value)}
+                                                rightSection={
 
-                    <Accordion.Item className={classes.item} value="Modificar-Pregunta">
-                        <Accordion.Control>Modificar pregunta</Accordion.Control>
-                        <Accordion.Panel>
-                            <ScrollArea>
-                                <TextInput
-                                    placeholder="Search by any field"
-                                    mb="md"
-                                    leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
-                                    value={search}
-                                    onChange={handleSearchChangeM}
-                                />
-                                <Table verticalSpacing="xs">
-                                    <Table.Tbody>
-                                        <Table.Tr>
-                                            <Th
-                                                sorted={sortBy === 'pregunta'}
-                                                reversed={reverseSortDirection}
-                                                onSort={() => setSortingM('pregunta')}
-                                            >
-                                                Pregunta
-                                            </Th>
-                                            <Th
-                                                sorted={sortBy === 'grado'}
-                                                reversed={reverseSortDirection}
-                                                onSort={() => setSortingM('grado')}
-                                            >
-                                                Grado
-                                            </Th>
-                                        </Table.Tr>
-                                    </Table.Tbody>
-                                    <Table.Tbody>
-                                        {rowsModificar.length > 0 ? (
-                                            rowsModificar
-                                        ) : (
-                                            <Table.Tr>
-                                                <Table.Td colSpan={Object.keys(dataModificar[0]).length}>
-                                                    <Text fw={500} ta="center">
-                                                        Sin resultados
-                                                    </Text>
-                                                </Table.Td>
-                                            </Table.Tr>
-                                        )}
-                                    </Table.Tbody>
-                                </Table>
-                            </ScrollArea>
-                        </Accordion.Panel>
-                    </Accordion.Item>
-                </Accordion>
-            </Container>
-            <Paper mt="90" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
-            </div>}
+                                                    <ActionIcon
+                                                        variant="default"
+                                                        size="100%"
+                                                        onClick={() => deleteAnswer(index)}
+                                                    >
+                                                        <X />
+                                                    </ActionIcon>
+                                                }
+                                                required
+                                                mb="sx"
+                                            />
+                                        ))}
+                                        <Button mt="xl" variant="outline" color="blue" onClick={addAnswer}>
+                                            Agregar otra respuesta
+                                        </Button>
+                                        <TextInput
+                                            mt="md"
+                                            placeholder="Respuesta"
+                                            label="Indica la respuesta correcta"
+                                            required
+                                        />
+
+                                        <Button mt="xl" color="blue">
+                                            Agregar
+                                        </Button>
+
+                                    </Paper>
+
+
+                                </Accordion.Panel>
+                            </Accordion.Item>
+
+                            <Accordion.Item className={classes.item} value="Eliminar-Pregunta">
+                                <Accordion.Control>Eliminar pregunta</Accordion.Control>
+                                <Accordion.Panel>
+                                    <ScrollArea>
+                                        <TextInput
+                                            placeholder="Search by any field"
+                                            mb="md"
+                                            leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
+                                            value={search}
+                                            onChange={handleSearchChange}
+                                        />
+                                        <Table verticalSpacing="xs">
+                                            <Table.Tbody>
+                                                <Table.Tr>
+                                                    <Th
+                                                        sorted={sortBy === 'pregunta'}
+                                                        reversed={reverseSortDirection}
+                                                        onSort={() => setSorting('pregunta')}
+                                                    >
+                                                        Pregunta
+                                                    </Th>
+                                                    <Th
+                                                        sorted={sortBy === 'grado'}
+                                                        reversed={reverseSortDirection}
+                                                        onSort={() => setSorting('grado')}
+                                                    >
+                                                        Grado
+                                                    </Th>
+                                                </Table.Tr>
+                                            </Table.Tbody>
+                                            <Table.Tbody>
+                                                {rowsEliminar.length > 0 ? (
+                                                    rowsEliminar
+                                                ) : (
+                                                    <Table.Tr>
+                                                        <Table.Td colSpan={Object.keys(dataEliminar[0]).length}>
+                                                            <Text fw={500} ta="center">
+                                                                Sin resultados
+                                                            </Text>
+                                                        </Table.Td>
+                                                    </Table.Tr>
+                                                )}
+                                            </Table.Tbody>
+                                        </Table>
+                                    </ScrollArea>
+                                </Accordion.Panel>
+                            </Accordion.Item>
+
+                            <Accordion.Item className={classes.item} value="Modificar-Pregunta">
+                                <Accordion.Control>Modificar pregunta</Accordion.Control>
+                                <Accordion.Panel>
+                                    <ScrollArea>
+                                        <TextInput
+                                            placeholder="Search by any field"
+                                            mb="md"
+                                            leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
+                                            value={search}
+                                            onChange={handleSearchChangeM}
+                                        />
+                                        <Table verticalSpacing="xs">
+                                            <Table.Tbody>
+                                                <Table.Tr>
+                                                    <Th
+                                                        sorted={sortBy === 'pregunta'}
+                                                        reversed={reverseSortDirection}
+                                                        onSort={() => setSortingM('pregunta')}
+                                                    >
+                                                        Pregunta
+                                                    </Th>
+                                                    <Th
+                                                        sorted={sortBy === 'grado'}
+                                                        reversed={reverseSortDirection}
+                                                        onSort={() => setSortingM('grado')}
+                                                    >
+                                                        Grado
+                                                    </Th>
+                                                </Table.Tr>
+                                            </Table.Tbody>
+                                            <Table.Tbody>
+                                                {rowsModificar.length > 0 ? (
+                                                    rowsModificar
+                                                ) : (
+                                                    <Table.Tr>
+                                                        <Table.Td colSpan={Object.keys(dataModificar[0]).length}>
+                                                            <Text fw={500} ta="center">
+                                                                Sin resultados
+                                                            </Text>
+                                                        </Table.Td>
+                                                    </Table.Tr>
+                                                )}
+                                            </Table.Tbody>
+                                        </Table>
+                                    </ScrollArea>
+                                </Accordion.Panel>
+                            </Accordion.Item>
+                        </Accordion>
+                    </Container>
+                    <Paper mt="90" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
+                </div>}
             </Transition>
-            
+
         </>
 
     );

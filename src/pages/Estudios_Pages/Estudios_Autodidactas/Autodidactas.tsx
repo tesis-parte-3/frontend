@@ -461,6 +461,7 @@ function Autodidactas() {
                         radius="md"
                         shadow="xl"
                         withBorder
+                        mb="xl"
                     >
                         <Center>
                             <Title order={2}>UNIDAD V:</Title>
@@ -628,35 +629,7 @@ function Autodidactas() {
                             Autor: MVDUCT
                         </Text>
                     </Paper>
-                    <Paper
-                        mt="30"
-                        p="lg"
-                        h="auto"
-                        w="85%"
-                        mx="auto"
-                        radius="md"
-                        shadow="xl"
-                        withBorder
-                    >
-                        <Center>
-                            <Title order={2}>UNIDAD VI:</Title>
-                        </Center>
-                        <Center>
-                            <Title order={3}>Motores 2 tiempos</Title>
-                        </Center>
-                        <Divider my="md" size="lg" />
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Text>Libro</Text>
-                            <Link to="/LibroDiccionarioVial">
-                                <Button variant="gradient"
-                                    gradient={{ from: 'gray', to: 'teal', deg: 210 }}>Leer</Button>
-                            </Link>
-                        </div>
-                        <Text fs="italic">
-                            Autor del libro
-                        </Text>
-                    </Paper>
-
+                    
 
 
 
@@ -677,7 +650,7 @@ function Autodidactas() {
                             MVDUCT
                         </Text> */}
 
-                    <Paper mt="90" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder> </Paper>
+                
                 </div>}
             </Transition>
         </>

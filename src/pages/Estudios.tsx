@@ -100,7 +100,7 @@ function Estudios() {
                         </Text>
                         <Card.Section className={classes.footer}>
                             <Group justify="flex-end">
-                                <Link to="/Autodidactas">
+                                <Link to="/G2_Estudios">
                                     <Button size="ml">
                                         Aprender
                                     </Button>
