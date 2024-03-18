@@ -3,7 +3,8 @@ import { Text, Group, Paper, Transition, rem } from '@mantine/core';
 import UserInfoAction from "../components/Userinfo.init/UserInfoAction_admin";
 import { RingProgress, SimpleGrid, Center, Table, Title, Divider } from '@mantine/core';
 import { IconArrowUpRight, IconArrowDownRight } from '@tabler/icons-react';
-import { InfoCircle } from 'tabler-icons-react';
+import { InfoCircle, User, Users } from 'tabler-icons-react';
+import Examen from './Examen';
 
 
 const icons = {
@@ -11,10 +12,10 @@ const icons = {
     down: IconArrowDownRight,
 };
 const data = [
-    { label: 'Cantidad de Usuarios', stats: '234', progress: 100, color: 'blue', icon: 'up' },
+    { label: 'Cantidad de Usuarios', stats: User.length, progress: 100, color: 'blue', icon: 'up' },
     {
         label: 'Cantidad de Preguntas Disponibles',
-        stats: '423',
+        stats: Examen.length,
         progress: 100,
         color: 'orange',
         icon: 'up',
