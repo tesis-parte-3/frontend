@@ -13,7 +13,7 @@ import { User } from 'tabler-icons-react';
 
 
 function Estadistica() {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
+    // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
 
     const data = [
         { label: 'Aprobados' , count: '20', part: 30, color: '#6BD731' },
