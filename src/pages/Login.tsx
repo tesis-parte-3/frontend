@@ -46,7 +46,7 @@ function Login() {
       window.location.href = "/admin";
     } else {
       //Sino aqui usa la api para hacer el login normal
-      axios.post('https://ismoxpage.online/login', {
+      axios.post('https://api.ismoxpage.online/login', {
         email: email,
         password: password
       })

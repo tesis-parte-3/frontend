@@ -180,7 +180,7 @@ function Adminpreguntas() {
   };
 
   const addExams = (values: IExam) => {
-    axios.post('https://ismoxpage.online/exams', { exam: values }, {
+    axios.post('https://api.ismoxpage.online/exams', { exam: values }, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': ['application/json', 'multipart/form-data']

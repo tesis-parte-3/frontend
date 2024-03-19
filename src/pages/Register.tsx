@@ -78,7 +78,7 @@ function Register() {
   });
 
   const handleRegister = (values: IRegister) => {
-    axios.post('https://ismoxpage.online/users', values)
+    axios.post('https://api.ismoxpage.online/users', values)
       .then(function (response) {
         console.log(response);
         localStorage.setItem("user", JSON.stringify(response.data))

@@ -21,7 +21,7 @@ interface IQuestions {
 }
 
   // const handleChange = (values: IUser) => {
-  //   axios.post(`https://ismoxpage.online/users/${user.id}`, {
+  //   axios.post(`https://api.ismoxpage.online/users/${user.id}`, {
   //     user: values
   //   }).then((res) => {
   //     localStorage.setItem("user", JSON.stringify({ user:values }))
@@ -89,7 +89,7 @@ function QuizzCard({ level }: IQuizzCard) {
 
 
   useEffect(() => {
-    axios.get(`https://ismoxpage.online/exams?level=${level}`).then((res) => {
+    axios.get(`https://api.ismoxpage.online/exams?level=${level}`).then((res) => {
       setQuestions(res.data)
       setLoading(false)
       console.log(res.data)
