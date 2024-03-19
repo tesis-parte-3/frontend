@@ -45,7 +45,7 @@ function UserInfoAction() {
             >
                 <Paper radius="md" withBorder p="lg" bg="var(--mantine-color-body)">
                     <Avatar
-                        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+                        src={user.avatar ? `https://api.ismoxpage.online${user.avatar.url}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
                         size={120}
                         radius={120}
                         mx="auto"

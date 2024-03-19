@@ -19,15 +19,14 @@ import {
   Transition,
   rem,
   keys,
-  ActionIcon
 } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from '@mantine/dropzone';
-import { FileInput } from '@mantine/core';
+// import { FileInput } from '@mantine/core';
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from '@tabler/icons-react';
 import THClass from './../assets/css/TableSort.module.css';
-import { X } from 'tabler-icons-react';
-import { useDisclosure } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
+// import { X } from 'tabler-icons-react';
+// import { useDisclosure } from '@mantine/hooks';
+// import { Modal } from '@mantine/core';
 
 interface RowData {
   pregunta: string;
@@ -41,8 +40,6 @@ interface IExam {
   correct_answer: string;
   picture: FileWithPath;
 }
-
-export declare const IMAGE_MIME_UNIQ_TYPE: ("image/png" | "image/gif" | "image/jpeg" | "image/svg+xml" | "image/webp" | "image/avif" | "image/heic");
 
 interface ThProps {
   children: React.ReactNode;
@@ -220,13 +217,13 @@ function Adminpreguntas() {
     setAnswers(newAnswers);
   };
 
-  const deleteAnswer = (index: number) => {
-    if (answers.length > 2) {
-      const newAnswers = [...answers];
-      newAnswers.splice(index, 1);
-      setAnswers(newAnswers);
-    }
-  };
+  // const deleteAnswer = (index: number) => {
+  //   if (answers.length > 2) {
+  //     const newAnswers = [...answers];
+  //     newAnswers.splice(index, 1);
+  //     setAnswers(newAnswers);
+  //   }
+  // };
   return (
     <>
       <Transition

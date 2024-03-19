@@ -14,13 +14,11 @@ function UserInfoIcons() {
         <div>
             <Group wrap="nowrap">
                 <Avatar
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    src={user.avatar ? `https://api.ismoxpage.online${user.avatar.url}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
                     size={94}
                     radius="md"
                 />
                 <div>
-
-
                     <Text fz="lg" fw={500} className={classes.name}>
                         {user.name}
                     </Text>

@@ -50,7 +50,7 @@ function Login() {
         email: email,
         password: password
       })
-        .then((res: any) => {
+        .then((res) => {
           console.log(res);
           localStorage.setItem("user", JSON.stringify(res.data))
           window.location.replace('/principal')

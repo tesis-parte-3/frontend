@@ -39,7 +39,6 @@ function Ajustes() {
     setIsMounted(true);
   }, []);
 
-  // @ts-ignore
   const form = useForm<IUser>({
     initialValues: {
       name: `${user.name}`,
@@ -138,7 +137,6 @@ function Ajustes() {
               </div>
               <GroupText label="Nombre" content={user.name} />
               <GroupText label="Email" content={user.email} />
-              <GroupText label="Telefono" content={localStorage.getItem('phoneNumber') || 'N/A'} />
               <Button
                 fullWidth
                 variant="light"
@@ -149,10 +147,6 @@ function Ajustes() {
               >
                 Actualizar datos de cuenta
               </Button>
-              <Divider my="md" />
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text> Agregar Numero Telefonico </Text> <Button variant="default" onClick={() => setModalTelefono(true)}>Agregar</Button>
-              </div>
               <Divider my="md" />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Text> Foto Perfil </Text> <UploadProfile />

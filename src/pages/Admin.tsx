@@ -3,7 +3,7 @@ import { Text, Group, Paper, Transition, rem } from '@mantine/core';
 import UserInfoAction from "../components/Userinfo.init/UserInfoAction_admin";
 import { RingProgress, SimpleGrid, Center, Table, Title, Divider } from '@mantine/core';
 import { IconArrowUpRight, IconArrowDownRight } from '@tabler/icons-react';
-import { InfoCircle, User, Users } from 'tabler-icons-react';
+import { InfoCircle, User } from 'tabler-icons-react';
 import Examen from './Examen';
 
 
