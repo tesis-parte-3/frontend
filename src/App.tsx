@@ -78,6 +78,31 @@ import Senal_TCT from './pages/Estudios_Pages/Estudios_G3/Senal_TCT';
 import BAExit from './pages/Aprendizaje_Pages/BackmenuBar2/backmenubar_estudios_Exit';
 import G2_Estudios from './pages/Estudios_Pages/Estudios_G2/G2_Estudios';
 
+//PDF G2 
+import Manual_Motocicleta from './pages/Estudios_Pages/Estudios_G2/Manual_Motocicleta';
+import Operador_Motocicleta from './pages/Estudios_Pages/Estudios_G2/Operador_Motocicleta';
+import Tecnicas_Motocicletas from './pages/Estudios_Pages/Estudios_G2/Tecnicas_Motocicletas';
+import BAExitG2 from './pages/Estudios_Pages/backmenuEstudioG2_exitPDF';
+
+//PDF G5
+import G5_Estudios from './pages/Estudios_Pages/Estudios_G5/G5_Estudios';
+import Guia_Seleccion_Transporte_Publico from './pages/Estudios_Pages/Estudios_G5/Guia_Seleccion_Transporte_Publico';
+import Motores_Diesel from './pages/Estudios_Pages/Estudios_G5/Motores_Diesel';
+import Operadores_de_camiones from './pages/Estudios_Pages/Estudios_G5/Operadores_de_camiones'
+import Manejo_para_camiones_de_carga from './pages/Estudios_Pages/Estudios_G5/Manejo_para_camiones_de_carga';
+import BAExitG5 from './pages/Estudios_Pages/backmenuEstudioG5_exitPDF';
+
+//PRE_START G2
+import Pre_StartG2 from './pages/Examen_Pages/LicenciaG2/Pre_StartG2';
+import BMG2_Exit from './pages/Examen_Pages/LicenciaG2/BMG2_PreStart';
+
+//PRE_START G3
+import Pre_StartG3 from './pages/Examen_Pages/LicenciaG3/Pre_StartG3';
+import BMG3_Exit from './pages/Examen_Pages/LicenciaG3/BMG3_PreStart';
+
+//PRE_START G5
+import Pre_StartG5 from './pages/Examen_Pages/LicenciaG5/Pre_StartG5';
+import BMG5_Exit from './pages/Examen_Pages/LicenciaG5/BMG5_PreStart';
 
 
 const App: React.FC = () => {
@@ -92,7 +117,12 @@ const App: React.FC = () => {
   const backmenubarAdmin = ['/Adminpreguntas', '/Admincu'].includes(location.pathname);
   const BMEstudios = ['/G3_Estudios', '/G5_Estudios', '/G2_Estudios'].includes(location.pathname);
   const BMExitG3 = ['/Senal_TCT','/Semaforo_G3','/Senal_MVA','/Senal_INFO','/Senal_PRE','/Senal_Regla','/Senal_VG','/Reductor_V', '/Luces_Vehiculos', '/Funcionamiento_Vehiculo', '/Conduccion_Responsable', '/Normativa_Basica', '/Linea_Demarcacion'].includes(location.pathname);
+  const BMExitG2 = ['/Tecnicas_Motocicletas','/Operador_Motocicleta','/Manual_Motocicleta'].includes(location.pathname);
+  const BMExitG5 = ['/Manejo_para_camiones_de_carga','/Operadores_de_camiones','/Motores_Diesel','/Guia_Seleccion_Transporte_Publico',].includes(location.pathname);
   const BAE = ['/Autodidactas'].includes(location.pathname);
+  const BMExitG2PreStart = ['/Pre_StartG2'].includes(location.pathname);
+  const BMExitG3PreStart = ['/Pre_StartG3'].includes(location.pathname);
+  const BMExitG5PreStart = ['/Pre_StartG5'].includes(location.pathname);
   return (
     <>
       {showBackmenu && <Backmenu />}
@@ -104,6 +134,11 @@ const App: React.FC = () => {
       {BMEstudios && <BM_EstudiosLicencias/>}
       {BMExitG3 && <BM_EstudiosLicencias_Exit/>}
       {BAE && <BAExit/>}
+      {BMExitG2 && <BAExitG2/>}
+      {BMExitG5 && <BAExitG5/>}
+      {BMExitG2PreStart && <BMG2_Exit/>}
+      {BMExitG3PreStart && <BMG3_Exit/>}
+      {BMExitG5PreStart && <BMG5_Exit/>}
 
       <Routes location={location} key={location.pathname}>
         <Route path='/*' element={<ErrorPage/>}/>
@@ -140,6 +175,23 @@ const App: React.FC = () => {
 
         {/* Estudios G2 */}
         <Route path="/G2_Estudios" element={<G2_Estudios />} />
+        <Route path="/Manual_Motocicleta" element={<Manual_Motocicleta />} />
+        <Route path="/Operador_Motocicleta" element={<Operador_Motocicleta />} />
+        <Route path="/Tecnicas_Motocicletas" element={<Tecnicas_Motocicletas />} />
+
+        {/* Estudios G5 */}
+        <Route path="/G5_Estudios" element={<G5_Estudios />} />
+        <Route path="/Guia_Seleccion_Transporte_Publico" element={<Guia_Seleccion_Transporte_Publico />} />
+        <Route path="/Motores_Diesel" element={<Motores_Diesel />} />
+        <Route path="/Operadores_de_camiones" element={<Operadores_de_camiones />} />
+        <Route path="/Manejo_para_camiones_de_carga" element={<Manejo_para_camiones_de_carga />} />
+
+      {/* Pre-Start de Examenes */}
+        <Route path="/Pre_StartG2" element={<Pre_StartG2 />} />
+        <Route path="/Pre_StartG3" element={<Pre_StartG3 />} />
+        <Route path="/Pre_StartG5" element={<Pre_StartG5 />} />
+        
+
 
 
         {/* Pages para los libros de aprendizaje */}

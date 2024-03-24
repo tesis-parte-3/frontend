@@ -4,8 +4,8 @@ import classes from './UserInfoIcons.module.css';
 import { useState } from 'react';
 
 function UserInfoIcons() {
-            //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
-            // @ts-ignore
+    //Usando localstorage con props se obtiene los datos para mostrarse como un mini perfil
+    // @ts-ignore
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')).user);
     const phoneNumber = localStorage.getItem('phoneNumber') || 'No hay número de teléfono';
 
@@ -25,17 +25,11 @@ function UserInfoIcons() {
 
                     <Group wrap="nowrap" gap={10} mt={3}>
                         <IconAt stroke={1.5} size="1rem" className={classes.icon} />
-                        <Text fz="xs" c="dimmed">
+                        <Text truncate="end" fz="xs" c="dimmed" >
                             {user.email}
                         </Text>
                     </Group>
 
-                    <Group wrap="nowrap" gap={10} mt={5}>
-                        <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
-                        <Text fz="xs" c="dimmed">
-                        {phoneNumber}
-                        </Text>
-                    </Group>
                 </div>
             </Group>
         </div>

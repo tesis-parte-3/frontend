@@ -1,5 +1,5 @@
 import Demo from "../function/modetheme/Demo";
-import { Paper, Text, Button, Transition, Modal, TextInput, PasswordInput, Divider, Group, Anchor } from '@mantine/core';
+import { Paper, Text, Button, Transition, Modal, TextInput, PasswordInput, Divider, Group, Anchor, Space } from '@mantine/core';
 import IconsProfile from '../components/Userinfo.init/UserInfoIcons';
 import { useEffect, useState } from 'react';
 import { useForm } from '@mantine/form'
@@ -25,13 +25,13 @@ function Ajustes() {
   const [isMounted, setIsMounted] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
-  
+
   const [ModalTelefono, setModalTelefono] = useState(false);
   function handleConfirm() {
     localStorage.setItem('phoneNumber', phoneNumber);
     // Cerrar el modal
   }
-  
+
   // @ts-ignore
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
 
@@ -43,42 +43,42 @@ function Ajustes() {
     initialValues: {
       name: `${user.name}`,
       email: `${user.email}`,
-      password:'',
+      password: '',
       id: user.id,
-      
+
       // currentPassword: '',
       // phone: ''
     },
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       name: (values) => (values.length < 2 ? 'Name is too short' : null),
-      password: (value) => (value.length < 8 && value.length > 0 || value.length > 50 ? 'La contraseña debe de estar entre 8 a 50 caracteres' : null) 
+      password: (value) => (value.length < 8 && value.length > 0 || value.length > 50 ? 'La contraseña debe de estar entre 8 a 50 caracteres' : null)
       // {
-        
-        
+
+
       //   if (value.length < 8 || value.length > 50) {
       //     return 'La contraseña debe de estar entre 8 a 50 caracteres';
       //   }
       //   return null;
-      },
+    },
 
 
 
-      // password: (values) => (
-      //   values.length < 6 ? 'Password is too short' : (
-      //     values.length > 50 ? 'Password is too long' :
-      //     // (
-      //     //   values === form.values.currentPassword ? 'New password should be different from current' : null
-      //     // )
-      //   )
-      // ),
-      // currentPassword: (values) => (values.length < 6 ? 'Password is too short' : (
-      //   values.length > 50 ? 'Password is too long' : (
-      //     values === form.values.password ? 'New password should be different from current' : null
-      //   )
-      // )),
-      // phone: (values) => (values.length < 6 ? 'Phone is too short' : null),
-    }
+    // password: (values) => (
+    //   values.length < 6 ? 'Password is too short' : (
+    //     values.length > 50 ? 'Password is too long' :
+    //     // (
+    //     //   values === form.values.currentPassword ? 'New password should be different from current' : null
+    //     // )
+    //   )
+    // ),
+    // currentPassword: (values) => (values.length < 6 ? 'Password is too short' : (
+    //   values.length > 50 ? 'Password is too long' : (
+    //     values === form.values.password ? 'New password should be different from current' : null
+    //   )
+    // )),
+    // phone: (values) => (values.length < 6 ? 'Phone is too short' : null),
+  }
   )
 
   // @ts-ignore
@@ -86,12 +86,12 @@ function Ajustes() {
     axios.put(`https://api.ismoxpage.online/users/${user.id}`, {
       user: values
     }).then((res) => {
-      localStorage.setItem("user", JSON.stringify({ user:values }))
+      localStorage.setItem("user", JSON.stringify({ user: values }))
       window.location.reload()
     })
-    .catch((err) => {
-      console.log(err);
-    });
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   const GroupText = ({ label, content }: IGroupText) => {
@@ -134,9 +134,20 @@ function Ajustes() {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px' }}>
                 <Text fw={350} fz={18}>Cambiar tema</Text> <Demo />
+                
               </div>
-              <GroupText label="Nombre" content={user.name} />
-              <GroupText label="Email" content={user.email} />
+              <Divider my="xs"></Divider>
+              <GroupText label="Nombre" content={user.name}/>
+              <Divider my="xs"></Divider>
+              <div style={{ display: 'flex' }}>
+                <Text size="lg">Correo: </Text>
+                
+                <Space w="40%" />
+                <Text truncate="end" fw={700}>{user.email}</Text>
+              </div>
+              
+
+
               <Button
                 fullWidth
                 variant="light"
@@ -195,16 +206,16 @@ function Ajustes() {
         <form onSubmit={form.onSubmit((values: IUser) => handleChange(values))}>
           {/* <UploadProfile /> */}
           <TextInput
-            
-            
+
+
             label="Nombre"
             placeholder="Nombre"
             mb={20}
             {...form.getInputProps('name')}
           />
           <TextInput
-            label="Email"
-            placeholder="Email"
+            label="Correo"
+            placeholder="Correo"
             mb={20}
             {...form.getInputProps('email')}
           />
@@ -215,14 +226,14 @@ function Ajustes() {
             {...form.getInputProps('currentPassword')}
           /> */}
           <PasswordInput
-          
+
             label="Nueva contraseña"
             placeholder="Nueva contraseña"
             mb={20}
 
 
-            
-            
+
+
             {...form.getInputProps('password')}
           />
           {/* <TextInput
@@ -240,10 +251,10 @@ function Ajustes() {
             mt={20}
           >
             Actualizar
-            
+
           </Button>
         </form>
-        
+
       </Modal>
     </>
 

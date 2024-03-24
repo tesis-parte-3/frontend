@@ -21,7 +21,7 @@ const mockdata = {
     descriptiong2:
         'Proceso mediante el cual se presenta Examen teórico Licencias para Conducir Motocicletas de cualquier cilindrada: segundo (2°) Grado.',
     imageg5:
-        'https://www.grupocarino.com/wp-content/uploads/2015/01/asistencia-gruas-granada.jpg',
+        'https://mecanicaymotores.com/wp-content/uploads/2022/10/camiones-carga-ventajas-post-800x533.jpg',
     titleg5: 'Licencia Grado 5',
     countryg5: 'Transporte Publico/Vehiculos de carga',
     descriptiong5:
@@ -126,7 +126,7 @@ function Examen() {
 
 
                         <Group mt="xs">
-                            <Link to="/Examen/LicenciaG3">
+                            <Link to="/Pre_StartG3">
                                 <Button radius="md" style={{ flex: 1 }}>
                                     Empezar
                                 </Button>
@@ -166,7 +166,7 @@ function Examen() {
 
 
                         <Group mt="xs">
-                            <Link to="/Examen/LicenciaG2">
+                            <Link to="/Pre_StartG2">
                                 <Button radius="md" style={{ flex: 1 }}>
                                     Empezar
                                 </Button>
@@ -206,7 +206,7 @@ function Examen() {
 
 
                         <Group mt="xs">
-                            <Link to="/Examen/LicenciaG5">
+                            <Link to="/Pre_StartG5">
                                 <Button radius="md" style={{ flex: 1 }}>
                                     Empezar
                                 </Button>

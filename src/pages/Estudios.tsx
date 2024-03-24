@@ -53,7 +53,7 @@ function Estudios() {
                             </Text>
                             <Group gap={5}>
                                 <Text fz="xs" c="dimmed">
-                                    80% completed
+                                    80% completado
                                 </Text>
                                 <RingProgress size={22} thickness={2} sections={[{ value: 80, color: 'blue' }]} />
                             </Group>
@@ -90,7 +90,7 @@ function Estudios() {
                             </Text>
                             <Group gap={5}>
                                 <Text fz="xs" c="dimmed">
-                                    80% completed
+                                    80% completado
                                 </Text>
                                 <RingProgress size={24} thickness={2} sections={[{ value: 80, color: 'blue' }]} />
                             </Group>
@@ -124,7 +124,7 @@ function Estudios() {
                             </Text>
                             <Group gap={5}>
                                 <Text fz="xs" c="dimmed">
-                                    80% completed
+                                    80% completado
                                 </Text>
                                 <RingProgress size={24} thickness={2} sections={[{ value: 80, color: 'blue' }]} />
                             </Group>
@@ -134,7 +134,7 @@ function Estudios() {
                         </Text>
                         <Card.Section className={classes.footer}>
                             <Group justify="flex-end">
-                                <Link to="/Autodidactas">
+                                <Link to="/G5_Estudios">
                                     <Button size="ml">
                                         Aprender
                                     </Button>

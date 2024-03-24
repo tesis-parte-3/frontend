@@ -97,25 +97,36 @@ function G2_Estudios() {
                         </Center>
                         <Divider my="md" size="lg" />
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Text>Como funciona un moto (Buscar)?</Text>
-                            <Link to="/Funcionamiento_Vehiculo">
+                            <Text>Como funciona un motocicleta</Text>
+                            <Link to="/Manual_Motocicleta">
                                 <Button variant="gradient"
                                     gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>Leer</Button>
                             </Link>
                         </div>
                         <Text fs="italic">
-                            Autor. EditorialCEP
+                            Autor. DC DMV
                         </Text>
                         <Divider my="md" size="lg" />
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Text>Contenido de una moto (Buscar)</Text>
-                            <Link to="/Luces_Vehiculos">
+                            <Text>Tecnicas para Motocicletas</Text>
+                            <Link to="/Tecnicas_Motocicletas">
                                 <Button variant="gradient"
                                     gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>Leer</Button>
                             </Link>
                         </div>
                         <Text fs="italic">
-                            Autor. AutoEscuela SIGLOXXI
+                            Autor. Mauricio Gallego A
+                        </Text>
+                        <Divider my="md" size="lg" />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Text>Operador de Motocicletas</Text>
+                            <Link to="/Operador_Motocicleta">
+                                <Button variant="gradient"
+                                    gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>Leer</Button>
+                            </Link>
+                        </div>
+                        <Text fs="italic">
+                            Autor. Motorcycle Safety Foundation
                         </Text>
                     </Paper>
                     <Divider my="md" label={<ArrowBarDown size={35} strokeWidth={2}></ArrowBarDown>} labelPosition="center" ml="xl" mr="xl" />

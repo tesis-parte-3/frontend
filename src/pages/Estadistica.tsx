@@ -1,9 +1,8 @@
 import { Progress, Box, Text, Group, Paper, SimpleGrid, rem, Badge } from '@mantine/core';
 import { IconArrowUpRight, IconDeviceAnalytics } from '@tabler/icons-react';
 import classes from '../components/Graficos/StatsCard.module.css';
-import { Transition } from '@mantine/core';
+import { Transition, Divider } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { User } from 'tabler-icons-react';
 
 
 /* Informacion de base de datos donde se saca la infomacion para hacer el grafico de victorias y derrotas */
@@ -16,7 +15,7 @@ function Estadistica() {
     // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
 
     const data = [
-        { label: 'Aprobados' , count: '20', part: 30, color: '#6BD731' },
+        { label: 'Aprobados', count: '20', part: 30, color: '#6BD731' },
         { label: 'Reprobados', count: '20', part: 70, color: '#9F4445' },
     ];
 
@@ -31,6 +30,7 @@ function Estadistica() {
             <Text tt="uppercase" fz="xs" c="dimmed" fw={700}>
                 {stat.label}
             </Text>
+            <Divider my="xs"></Divider>
 
             <Group justify="space-between" align="flex-end" gap={0}>
                 <Text fw={700}>{stat.count}</Text>
@@ -66,7 +66,7 @@ function Estadistica() {
     }, []);
     const percentageI = (counterI / totalPagesI) * 100;
 
-    
+
 
 
 
@@ -361,7 +361,7 @@ function Estadistica() {
     }, []);
     const percentageV = parseFloat(((counterV / totalPagesV) * 100).toFixed(2));
 
-    
+
 
     return (
         <>
@@ -394,6 +394,7 @@ function Estadistica() {
                         <SimpleGrid cols={{ base: 1, xs: 3 }} mt="xl">
                             {descriptions}
                         </SimpleGrid>
+
                     </Paper>
                     <Paper shadow="xl" mt="30" p="lg" h="auto" w="85%" mx="auto" radius="md" withBorder className={classes.card}>
                         <Text ta="center" fw={700} className={classes.title}>
@@ -410,7 +411,7 @@ function Estadistica() {
                                 Unidad I
                             </Text>
                             <Text fz="sm" c="dimmed">
-                                Progress
+                                Progreso
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 {percentageI}%
@@ -429,7 +430,7 @@ function Estadistica() {
                                 Unidad II
                             </Text>
                             <Text fz="sm" c="dimmed">
-                                Progress
+                                Progreso
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 {percentageII}%
@@ -448,7 +449,7 @@ function Estadistica() {
                                 Unidad III
                             </Text>
                             <Text fz="sm" c="dimmed">
-                                Progress
+                                Progreso
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 {percentageIII}%
@@ -468,7 +469,7 @@ function Estadistica() {
                                 Unidad IV
                             </Text>
                             <Text fz="sm" c="dimmed">
-                                Progress
+                                Progreso
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 {percentageIV}%
@@ -487,7 +488,7 @@ function Estadistica() {
                                 Unidad V
                             </Text>
                             <Text fz="sm" c="dimmed">
-                                Progress
+                                Progreso
                             </Text>
                             <Text fz="sm" c="dimmed">
                                 {percentageV}%
