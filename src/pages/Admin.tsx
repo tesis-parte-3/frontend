@@ -22,11 +22,11 @@ const data = [
     },
 ] as const;
 const UsersData = [
-    { name: "Juan", email: "email@email.com", password: 'arctc33', dni: '126345' },
-    { name: "Ismael", email: "email@email.com", password: 'erybhr', dni: '782345' },
-    { name: "Rafael", email: "email@email.com", password: 'rtytber', dni: '134721' },
-    { name: "Alberto", email: "email@email.com", password: 'Basdegrtru', dni: '1234676' },
-    { name: "Enrique", email: "email@email.com", password: 'Casdasd', dni: '6242342' },
+    { name: "Juan", email: "email@email.com", dni: '126345' },
+    { name: "Ismael", email: "email@email.com", dni: '782345' },
+    { name: "Rafael", email: "email@email.com", dni: '134721' },
+    { name: "Alberto", email: "email@email.com", dni: '1234676' },
+    { name: "Enrique", email: "email@email.com", dni: '6242342' },
 ];
 
 function Admin() {
@@ -39,7 +39,6 @@ function Admin() {
         <Table.Tr key={UsersData.name}>
             <Table.Td>{UsersData.name}</Table.Td>
             <Table.Td>{UsersData.email}</Table.Td>
-            <Table.Td>{UsersData.password}</Table.Td>
             <Table.Td>{UsersData.dni}</Table.Td>
         </Table.Tr>
     ));
@@ -100,7 +99,6 @@ function Admin() {
                                 <Table.Tr>
                                     <Table.Th>Nombre</Table.Th>
                                     <Table.Th>Email</Table.Th>
-                                    <Table.Th>Contraseña</Table.Th>
                                     <Table.Th>Cedula</Table.Th>
                                 </Table.Tr>
                             </Table.Thead>
