@@ -126,7 +126,7 @@ function Register() {
             <TextInput
               required
               label="Email"
-              placeholder="hello@mantine.dev"
+              placeholder="hello@banano.dev"
               error={form.errors.email && 'Email Invalido'}
               radius="md"
               {...form.getInputProps('email')}
