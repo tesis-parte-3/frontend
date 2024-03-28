@@ -21,13 +21,14 @@ const data = [
         icon: 'up',
     },
 ] as const;
-const UsersData = [
-    { name: "Juan", email: "email@email.com", dni: '126345' },
-    { name: "Ismael", email: "email@email.com", dni: '782345' },
-    { name: "Rafael", email: "email@email.com", dni: '134721' },
-    { name: "Alberto", email: "email@email.com", dni: '1234676' },
-    { name: "Enrique", email: "email@email.com", dni: '6242342' },
-];
+
+const names = ['Juan', 'Ismael', 'Rafael', 'Alberto', 'Enrique'];
+
+const UsersData = Array.from({ length: names.length }, (_, index) => ({
+    name: names[index],
+    email: `${names[index].toLowerCase()}@gmail.com`,
+    dni: `V-${Math.floor(Math.random() * 100000000)}`,
+}));
 
 function Admin() {
     const [isMounted, setIsMounted] = useState(false);
