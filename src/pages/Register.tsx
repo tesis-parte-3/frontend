@@ -74,7 +74,7 @@ function Register() {
         return null
       }
     },
-    
+
   });
 
   const handleRegister = (values: IRegister) => {
@@ -99,86 +99,86 @@ function Register() {
     <>
       <Navbar />
       <Transition
-                mounted={isMounted}
-                transition="scale-y"
-                duration={300}
-                timingFunction="ease"
-            >
-                {(styles) => <div style={styles}>
-                <Paper mt="60" radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
-        
-        <Text size="xl" fw={700} ta="center">
-          Bienvenido a QuizDrive, registrate
-        </Text>
+        mounted={isMounted}
+        transition="scale-y"
+        duration={300}
+        timingFunction="ease"
+      >
+        {(styles) => <div style={styles}>
+          <Paper mt="60" radius="md" p="lg" withBorder h="auto" w="85%" mx="auto">
 
-        <Divider label="Registro de Datos" labelPosition="center" my="lg" />
+            <Text size="xl" fw={700} ta="center">
+              Bienvenido a QuizDrive, registrate
+            </Text>
 
-        <form onSubmit={form.onSubmit(() => { })}>
-          <Stack>
-            <TextInput
-              required
-              label="Name"
-              placeholder="Tu Nombre"
-              error={form.errors.name && 'Nombre inválido, tiene caracteres no permitidos'}
-              radius="md"
-              {...form.getInputProps('name')}
-            />
-            <TextInput
-              required
-              label="Email"
-              placeholder="hello@banano.dev"
-              error={form.errors.email && 'Email Invalido'}
-              radius="md"
-              {...form.getInputProps('email')}
-            />
-            <TextInput
-              required
-              label="Cedula"
-              placeholder="12345678"
-              error={form.errors.dni && 'Cedula invalida debe tener al menos 7 digitos'}
-              radius="md"
-              {...form.getInputProps('dni')}
-            />
-            <PasswordInput
-              required
-              label="Password"
-              placeholder="Your password"
-              error={form.errors.password && 'Tiene que tener mas de 6 caracteres'}
-              radius="md"
-              {...form.getInputProps('password')}
-            />
-            <PasswordInput
-              required
-              label="Password"
-              placeholder="Your password"
-              error={form.errors.password_confirmation && 'Tiene que tener mas de 6 caracteres'}
-              radius="md"
-              {...form.getInputProps('password_confirmation')}
-            />
-            <Checkbox
-              required
-              label="I accept terms and conditions"
-              checked={form.values.terms}
-              {...form.getInputProps('terms')}
-            />
-          </Stack>
+            <Divider label="Registro de Datos" labelPosition="center" my="lg" />
 
-          <Group justify="space-between" mt="xl">
-            <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/login")} size="xs">
-              Ya tienes una cuenta? Logeate
-            </Anchor>
-            <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/recuperar")} size="xs">
-              No recuerdas tu contraseña?
-            </Anchor>
-            <Button type="submit" radius="xl" onClick={() => handleRegister(form.values)} >
-              Registrate
-            </Button>
-          </Group>
-        </form>
-      </Paper>
-            </div>}
-            </Transition>
-      
+            <form onSubmit={form.onSubmit(() => { })}>
+              <Stack>
+                <TextInput
+                  required
+                  label="Name"
+                  placeholder="Tu Nombre"
+                  error={form.errors.name && 'Nombre inválido, tiene caracteres no permitidos'}
+                  radius="md"
+                  {...form.getInputProps('name')}
+                />
+                <TextInput
+                  required
+                  label="Email"
+                  placeholder="hello@banano.dev"
+                  error={form.errors.email && 'Email Invalido'}
+                  radius="md"
+                  {...form.getInputProps('email')}
+                />
+                <TextInput
+                  required
+                  label="Cedula"
+                  placeholder="12345678"
+                  error={form.errors.dni && 'Cedula invalida debe tener al menos 7 digitos'}
+                  radius="md"
+                  {...form.getInputProps('dni')}
+                />
+                <PasswordInput
+                  required
+                  label="Password"
+                  placeholder="Your password"
+                  error={form.errors.password && 'Tiene que tener mas de 6 caracteres'}
+                  radius="md"
+                  {...form.getInputProps('password')}
+                />
+                <PasswordInput
+                  required
+                  label="Password"
+                  placeholder="Your password"
+                  error={form.errors.password_confirmation && 'Tiene que tener mas de 6 caracteres'}
+                  radius="md"
+                  {...form.getInputProps('password_confirmation')}
+                />
+                <Checkbox
+                  required
+                  label="I accept terms and conditions"
+                  checked={form.values.terms}
+                  {...form.getInputProps('terms')}
+                />
+              </Stack>
+
+              <Group justify="space-between" mt="xl">
+                <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/login")} size="xs">
+                  Ya tienes una cuenta? Logeate
+                </Anchor>
+                <Anchor component="button" type="button" c="dimmed" onClick={() => window.location.replace("/recuperar")} size="xs">
+                  No recuerdas tu contraseña?
+                </Anchor>
+                <Button type="submit" radius="xl" onClick={() => handleRegister(form.values)} >
+                  Registrate
+                </Button>
+              </Group>
+            </form>
+          </Paper>
+        </div>}
+      </Transition>
+
     </>
   )
 }

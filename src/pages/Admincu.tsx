@@ -136,7 +136,7 @@ function Admincu() {
         timingFunction="ease"
       >
         {(styles) => <div style={styles}>
-          { error && (<Alert w="100%" title={error} color="red" mt="md" mb="md" />) }
+          {error && (<Alert w="100%" title={error} color="red" mt="md" mb="md" />)}
           <Paper>
             <Title order={2} ta="center" mt="lg">Control de Usuario</Title>
             <Divider my="md" label={<Users size={25} strokeWidth={2}></Users>} labelPosition="center" ml="xl" mr="xl" />
