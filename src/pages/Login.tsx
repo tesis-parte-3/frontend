@@ -44,6 +44,7 @@ function Login() {
     if (email === adminEmail && password === adminPassword) {
       // Si es así, redirige al usuario al dashboard del administrador
       window.location.href = "/admin";
+      localStorage.setItem("admin_token", "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE5MzI0MzY2NzN9.PzeZ2dIbka8qcboc4OOWfaBGkonmd8_94PXytzuedyM")
     } else {
       //Sino aqui usa la api para hacer el login normal
       axios.post('https://api.ismoxpage.online/login', {

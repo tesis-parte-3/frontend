@@ -3,21 +3,59 @@ import { IconArrowUpRight, IconDeviceAnalytics } from '@tabler/icons-react';
 import classes from '../components/Graficos/StatsCard.module.css';
 import { Transition, Divider } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 /* Informacion de base de datos donde se saca la infomacion para hacer el grafico de victorias y derrotas */
 
+interface IUser {
+    name: string;
+    email: string;
+    password: string;
+    id: number;
+    approved_exams: number;
+    reproved_exams: number;
+}
 
-
-
+interface IData {
+    label: string;
+    count: number;
+    part: number;
+    color: string;
+}
 
 function Estadistica() {
-    // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")).user)
+    const [user, setUser] = useState<IUser | null>(null)
+    const [data, setData] = useState<IData[]>([
+        { label: 'Aprobados', count: 0, part: 0, color: '#6BD731' },
+        { label: 'Reprobados', count: 0, part: 0, color: '#9F4445' },
+    ])
 
-    const data = [
-        { label: 'Aprobados', count: '20', part: 30, color: '#6BD731' },
-        { label: 'Reprobados', count: '20', part: 70, color: '#9F4445' },
-    ];
+    useEffect(() => {
+        axios.get('https://api.ismoxpage.online/users/current', {
+            headers: {
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user') || '{}').token}`
+            }
+        }).then((res) => {
+            console.log(res.data);
+            setUser(res.data)
+
+            // Calculate the total number of exams
+            const totalExams = res.data.approved_exams + res.data.reproved_exams;
+
+            // Calculate the percentage of approved and failed exams
+            const approvedPercentage = (res.data.approved_exams / totalExams) * 100;
+            const failedPercentage = (res.data.reproved_exams / totalExams) * 100;
+
+            // Update the data array
+            setData([
+                { label: 'Aprobados', count: res.data.approved_exams, part: approvedPercentage, color: '#6BD731' },
+                { label: 'Reprobados', count: res.data.reproved_exams, part: failedPercentage, color: '#9F4445' },
+            ]);
+        }).catch(() => {
+            window.location.reload()
+        })
+    }, [])
 
     const segments = data.map((segment) => (
         <Progress.Section value={segment.part} color={segment.color} key={segment.color}>
@@ -25,7 +63,7 @@ function Estadistica() {
         </Progress.Section>
     ));
 
-    const descriptions = data.map((stat) => (
+    const descriptions = data.map((stat: IData) => (
         <Box key={stat.label} style={{ borderBottomColor: stat.color }} className={classes.stat}>
             <Text tt="uppercase" fz="xs" c="dimmed" fw={700}>
                 {stat.label}
@@ -377,10 +415,6 @@ function Estadistica() {
                             <Group align="flex-end" gap="xs">
                                 <Text fz="xl" fw={700}>
                                     Estadisticas
-                                </Text>
-                                <Text c="teal" className={classes.diff} fz="sm" fw={700}>
-                                    <span>33,33%</span> {/* Aqui seria una tasa de victorias. */}
-                                    <IconArrowUpRight size="1rem" style={{ marginBottom: rem(4) }} stroke={1.5} />
                                 </Text>
                             </Group>
                             <IconDeviceAnalytics size="1.4rem" className={classes.icon} stroke={1.5} />

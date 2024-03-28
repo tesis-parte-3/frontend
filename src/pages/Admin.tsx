@@ -3,16 +3,51 @@ import { Text, Group, Paper, Transition, rem } from '@mantine/core';
 import UserInfoAction from "../components/Userinfo.init/UserInfoAction_admin";
 import { RingProgress, SimpleGrid, Center, Table, Title, Divider } from '@mantine/core';
 import { IconArrowUpRight, IconArrowDownRight } from '@tabler/icons-react';
-import { InfoCircle, User } from 'tabler-icons-react';
+import { InfoCircle } from 'tabler-icons-react';
 import Examen from './Examen';
+import axios from 'axios';
 
+interface IUserQuantity {
+    label: string;
+    stats: number;
+    progress: number;
+    color: string;
+    icon: 'up' | 'down';
+}
+
+interface IQuestionsQuantity {
+    label: string;
+    stats: number;
+    progress: number;
+    color: string;
+    icon: 'up' | 'down';
+}
+
+interface IUsersData {
+    name: string;
+    email: string;
+    dni: string;
+}
+
+interface IUser {
+    id: number;
+    name: string;
+    email: string;
+    dni: string;
+    approved_exams: number | null;
+    reproved_exams: number | null;
+    users_quantity: number;
+    created_at: string;
+    updated_at: string;
+}
 
 const icons = {
     up: IconArrowUpRight,
     down: IconArrowDownRight,
 };
+
 const data = [
-    { label: 'Cantidad de Usuarios', stats: User.length, progress: 100, color: 'blue', icon: 'up' },
+    { label: 'Cantidad de Usuarios', stats: 1, progress: 100, color: 'blue', icon: 'up' },
     {
         label: 'Cantidad de Preguntas Disponibles',
         stats: Examen.length,
@@ -24,19 +59,51 @@ const data = [
 
 const names = ['Juan', 'Ismael', 'Rafael', 'Alberto', 'Enrique'];
 
-const UsersData = Array.from({ length: names.length }, (_, index) => ({
-    name: names[index],
-    email: `${names[index].toLowerCase()}@gmail.com`,
-    dni: `V-${Math.floor(Math.random() * 100000000)}`,
-}));
 
 function Admin() {
     const [isMounted, setIsMounted] = useState(false);
+    const [users, setUsers] = useState([
+        { name: '', email: '', dni: '' }
+    ]);
+    const [userQuantity, setUserQuantity] = useState<IUserQuantity>({
+        label: 'Cantidad de Usuarios',
+        stats: 0,
+        progress: 0,
+        color: 'blue',
+        icon: 'up',
+    })
+    const [questionsQuantity, setQuestionsQuantity] = useState<IQuestionsQuantity>({
+        label: 'Cantidad de Preguntas Disponibles',
+        stats: 0,
+        progress: 0,
+        color: 'orange',
+        icon: 'up',
+    })
 
     useEffect(() => {
         setIsMounted(true);
+        
+        axios.get("https://api.ismoxpage.online/users", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('admin_token')}`
+            }
+        }).then((res) => {
+            setUsers([])
+            res.data.map((user: IUser) => {
+                setUsers((prev) => [...prev, { name: user.name, email: user.email, dni: user.dni }])
+            })
+            setUserQuantity({
+                label: 'Cantidad de Usuarios',
+                stats: res.data[0].users_quantity,
+                progress: 100,
+                color: 'blue',
+                icon: 'up',
+            })
+        }).catch((err) => {
+            console.log(err);
+        })
     }, []);
-    const rows = UsersData.map((UsersData) => (
+    const rows = users.map((UsersData) => (
         <Table.Tr key={UsersData.name}>
             <Table.Td>{UsersData.name}</Table.Td>
             <Table.Td>{UsersData.email}</Table.Td>
@@ -45,16 +112,16 @@ function Admin() {
     ));
 
 
-    const stats = data.map((stat) => {
-        const Icon = icons[stat.icon];
+    const Stats = () => {
+        const Icon = icons[userQuantity.icon];
         return (
-            <Paper withBorder radius="md" p="xs" key={stat.label} ml="lg" mr="lg">
+            <Paper withBorder radius="md" p="xs" key={userQuantity.label} ml="lg" mr="lg">
                 <Group>
                     <RingProgress
                         size={80}
                         roundCaps
                         thickness={8}
-                        sections={[{ value: stat.progress, color: stat.color }]}
+                        sections={[{ value: userQuantity.progress, color: userQuantity.color }]}
                         label={
                             <Center>
                                 <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
@@ -64,16 +131,16 @@ function Admin() {
 
                     <div>
                         <Text c="dimmed" size="xs" tt="uppercase" fw={700}>
-                            {stat.label}
+                            {userQuantity.label}
                         </Text>
                         <Text fw={700} size="xl">
-                            {stat.stats}
+                            {userQuantity.stats}
                         </Text>
                     </div>
                 </Group>
             </Paper>
         );
-    });
+    }
 
 
     return (
@@ -89,7 +156,9 @@ function Admin() {
                     
                     <Title order={2} ta="center" mt="lg">Vista Rapida</Title>
                     <Divider my="md" label={<InfoCircle size={25} strokeWidth={2}></InfoCircle>} labelPosition="center" ml="xl" mr="xl" />
-                    <SimpleGrid cols={{ base: 1, sm: 3 }}>{stats}</SimpleGrid>
+                    <SimpleGrid cols={{ base: 1, sm: 3 }}>
+                        <Stats />
+                    </SimpleGrid>
                     <Paper m="lg" shadow="lg" withBorder>
                         <Text size="xl" ta="center" fw={500} p="xs" >
                             Ultimos usuarios registrados en las 24 horas.

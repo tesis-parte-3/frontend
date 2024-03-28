@@ -36,9 +36,13 @@ interface RowData {
 interface IExam { 
   level: string;
   question: string;
-  answers: string[];
+  answers: string[]
   correct_answer: string;
   picture: FileWithPath;
+  first_answer?: string;
+  second_answer?: string;
+  third_answer?: string;
+  fourth_answer?: string;
 }
 
 interface ThProps {
@@ -170,6 +174,11 @@ function Adminpreguntas() {
 
   const [answers, setAnswers] = useState<string[]>([]);
 
+  const [firstAnswer, setFirstAnswer] = useState<string>('');
+  const [secondAnswer, setSecondAnswer] = useState<string>('');
+  const [thirdAnswer, setThirdAnswer] = useState<string>('');
+  const [fourthAnswer, setFourthAnswer] = useState<string>('');
+
   const handleSearchChangeM = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearch(value);
@@ -215,6 +224,21 @@ function Adminpreguntas() {
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
+
+    switch (index) {
+      case 0:
+        setFirstAnswer(value);
+        break;
+      case 1:
+        setSecondAnswer(value);
+        break;
+      case 2:
+        setThirdAnswer(value);
+        break;
+      case 3:
+        setFourthAnswer(value);
+        break;
+    }
   };
 
   // const deleteAnswer = (index: number) => {
@@ -320,7 +344,11 @@ function Adminpreguntas() {
                         question: title,
                         answers: answers,
                         correct_answer: correctAnswer,
-                        picture: files[0]
+                        picture: files[0],
+                        first_answer: firstAnswer,
+                        second_answer: secondAnswer,
+                        third_answer: thirdAnswer,
+                        fourth_answer: fourthAnswer
                       });
                     }}>
                       Agregar pregunta

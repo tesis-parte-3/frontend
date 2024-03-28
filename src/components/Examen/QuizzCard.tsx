@@ -18,6 +18,9 @@ interface IQuestions {
   correct_answer: string;
   exam_a: number;
   exam_r: number;
+  picture: {
+    url: string | null
+  }
 }
 
   // const handleChange = (values: IUser) => {
@@ -99,6 +102,20 @@ function QuizzCard({ level }: IQuizzCard) {
   }, [failureCounter])
 
   useEffect(() => {
+    if (currentQuestion === questions.length) {
+      if (score >= 19) {
+        axios.post(`https://api.ismoxpage.online/exams/approve_exam`,).then((res) => {
+          console.log(res.data)
+        })
+      } else {
+        axios.post(`https://api.ismoxpage.online/exams/reprove_exam`,).then((res) => {
+          console.log(res.data)
+        })
+      }
+    }
+  })
+
+  useEffect(() => {
 
     const intervalo = setInterval(() => {
 
@@ -174,7 +191,7 @@ function QuizzCard({ level }: IQuizzCard) {
 
           <span>
             {" "}
-            {score >= 20 ? "¡Felicidades! Has aprobado el examen" : "Lo siento, no has aprobado el examen"}
+            {score >= 19 ? "¡Felicidades! Has aprobado el examen" : "Lo siento, no has aprobado el examen"}
             {" "}
           </span>
 
@@ -440,7 +457,11 @@ function QuizzCard({ level }: IQuizzCard) {
       ) : (
 
         <div className='container'>
-
+          {
+            questions[currentQuestion].picture.url !== null && (
+              <img src={`https://api.ismoxpage.online` + questions[currentQuestion].picture?.url ?? ''} alt="imagen" style={{ width: '100%' }} />
+            )
+          }
           <div className="lado-izquierdo">
 
             <div className="numero-pregunta">
