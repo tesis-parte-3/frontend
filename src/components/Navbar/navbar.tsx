@@ -23,8 +23,15 @@ function Navbar() {
         <Group justify="space-between" h="100%">
           <Link to="/"><img src={logo} alt="Logo" className={classes.logito}/></Link>
           <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button 
+              variant="default"
+              onClick={() => window.location.replace('/login')}
+            >
+              Log in
+            </Button>
+            <Button
+              onClick={() => window.location.replace('/register')}
+            >Sign up</Button>
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
